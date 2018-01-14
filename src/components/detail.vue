@@ -16,7 +16,7 @@
   			<b><img src="../assets/img/option.png"/></b>
   		</p>
   	</div>
- 		<div class="mui-content detail-content">
+ 		<div class="mui-content detail-content" v-if="good!=null">
  			<mt-loadmore class="detail-loadmore" topLoadingText="正在刷新" :top-method="top" :bottom-method="bottom" :bottom-all-loaded="tuwenShow" ref="loadmore">
  				<!--详情轮播-->
  		    <div class="detail-banner">
@@ -28,13 +28,13 @@
 				</div>
 				<!--商品介绍-->
 				<div class="good-box">
-					<h3 class="good-title">2017年新品专柜清新镂空蕾丝裙子2017年新品专柜清新镂空蕾丝裙子----{{a}}</h3>
-					<div class="good-price">价格：<b>￥500</b></div>
-					<div class="good-jifen">兑换几根：<b>￥300</b></div>
+					<h3 class="good-title">{{good.goodTitle}}----{{a}}</h3>
+					<div class="good-price">价格：<b>￥{{good.goodPrice}}</b></div>
+					<div class="good-jifen">兑换积分：<b>￥{{good.goodScore}}</b></div>
 					<ul class="good-xiaoshou row-lr">
-						<li>快递：包邮</li>
-						<li>销量：12</li>
-						<li>广州</li>
+						<li>快递：{{good.goodDeliver}}</li>
+						<li>销量：{{good.goodSellNum}}</li>
+						<li>{{good.goodAddress}}</li>
 					</ul>
 				</div>
 				
@@ -67,19 +67,19 @@
 				<transition name="fade">
 					<div v-if="tuwenShow" class="tuwen">
 						<div class="comment-box">
-							<h4>宝贝评价(64)</h4>
+							<h4>宝贝评价({{good.commentNum}})</h4>
 							<dl>
 								<dt class="row-l">
 									<img src="../assets/img/icon_baiye_hunyuqinzi.png"/>
-									<span class="user">郭美美</span>
+									<span class="user">{{good.commentName}}</span>
 									<p class="row-l">
 										<em><img src="../assets/img/icon_baiyelianmeng_default.png"/></em>
 										<em><img src="../assets/img/icon_baiyelianmeng_default.png"/></em>
 									</p>
 								</dt>
 								<dd>
-									<span class="time">2017-10-12</span>
-									<span>颜色分类：灰色；尺码：L</span>
+									<span class="time">{{good.commentTime}}</span>
+									<span>{{good.commentText}}</span>
 								</dd>
 							</dl>
 							<div @click="allComment" class="see-all">查看全部评价</div>
@@ -87,7 +87,7 @@
 						<div class="img-detail-box">
 							<h4>图文详情</h4>
 							<div class="img-box">
-								<img v-for="item in 10" src="../assets/img/baiye_banner.png"/>
+								<img v-for="item in good.tuwenList" :src="item"/>
 							</div>
 							
 						</div>
@@ -111,8 +111,8 @@
 						<dl class="row-l">
 							<dt><img src="../assets/img/good-attr-img.png"/></dt>
 							<dd class="col-u">
-								<b class="good-price">￥330</b>
-								<span class="goog-kucun">库存6件</span>
+								<b class="good-price">￥{{good.goodPrice}}</b>
+								<span class="goog-kucun">库存{{good.goodStock}}件</span>
 								<div class="selected row-l">
 									已选：
 									<span v-for="a in hasSelect">{{a}}</span>
@@ -122,7 +122,7 @@
 						</dl>
 				</div>
 				<div class="mid">
-					<div class="mid-item" v-for="(item,index) in attrSelect">
+					<div class="mid-item" v-for="(item,index) in good.attrSelect">
 						<h4>{{item.title}}</h4>
 						<ul class="row-l">
 							<li @click="selecting(index,n)" v-for="(it,n) in item.options" :class="{'active':it.isSelect==1}">{{it.text}}</li>
@@ -154,6 +154,7 @@ export default {
   name: 'detail',
   data () {
     return {
+    	good:null,
       msg: '',
       id:'',
       tuwenShow:false,
@@ -182,7 +183,7 @@ export default {
   computed:{
   	hasSelect(){
 			var arr=[];
-			this.attrSelect.forEach(function(el){
+			this.good.attrSelect.forEach(function(el){
 				el.options.forEach(function(el){
 					if(el.isSelect==1){
 						arr.push(el.text)
@@ -276,13 +277,10 @@ export default {
 		},
 		selecting(index,n){//选择商品属性
 			console.log(index)
-			this.attrSelect[index].options.forEach((el)=>{
+			this.good.attrSelect[index].options.forEach((el)=>{
 				el.isSelect=0
 			})
-//			for(let op of this.attrSelect[index].options){
-//				console.log(op.isSelect)
-//			}
-			this.attrSelect[index].options[n].isSelect=1;
+			this.good.attrSelect[index].options[n].isSelect=1;
 			
 		},
 		gotoCar(){//前往购物车
@@ -302,6 +300,15 @@ export default {
        	console.log(to)
        	//把当前的组件传递进去，跳到目标页面之后就可以获取目标页面的实例。
         next(detail=>{
+        	detail.$http.get('/api/jifenDetail').then(res=>{
+						console.log(res.body.data.good);
+						detail.good=res.body.data.good;
+						console.log(detail.good);
+					},err=>{
+						console.log(err)
+					})
+        	
+        	
         	console.log(detail.a);
         	detail.a=to.params.id;
         	

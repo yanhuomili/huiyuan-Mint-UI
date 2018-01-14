@@ -178,7 +178,7 @@ export default {
 			this.chuan=true;
   	
   	//////////请求数据//////////////////
-	this.$http.get('api/gg').then(response=>{
+	this.$http.get('/api/jifenDetail').then(response=>{
 		console.log(response.body.data)
 //		var data=response.data.jifen;
 //			this.goodList=data;
