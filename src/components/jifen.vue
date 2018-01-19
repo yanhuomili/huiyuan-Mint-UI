@@ -178,10 +178,10 @@ export default {
 			this.chuan=true;
   	
   	//////////请求数据//////////////////
-	this.$http.get('/api/jifenDetail').then(response=>{
+	this.$http.get('/api/jiFen').then(response=>{
 		console.log(response.body.data)
-//		var data=response.data.jifen;
-//			this.goodList=data;
+		var data=response.body.data.list;
+			this.goodList=data;
 //			this.chuan=true;
 //			this.banner=this.goodList.banner;
 			setTimeout(()=>{
@@ -276,8 +276,8 @@ a{
 	background: #fff;
 	padding: 0 5px;
 	em{
-		width: 25px;
-		height: 25px;
+		width: 20px;
+		height: 20px;
 		margin-right: 15px;
 	}
 	ul{

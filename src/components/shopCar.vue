@@ -5,15 +5,16 @@
   	    <a class="mui-pull-right car-operate">编辑</a>
   	    <h1 class="mui-title">购物车</h1>
   	</header>
- 		<div class="mui-content">
+ 		<div class="mui-content" id="carBox">
 			<div class="store-box">
-				<div v-for="(store,index1) in list" class="store-item">
+				<div class="tip-box"></div>
+				<div v-for="(store,index1) in fromstorelist" class="store-item">
 					<div class="store-name row-l">
 						<em @click="storeAllCheck(store)" :class="{'storeActive':store.checked}"></em>
 						<h4>{{store.shopName}}</h4>
 					</div>
 					<div class="good-list">
-						<div v-for="(good,index2) in store.goodsList" class="good-item-box">
+						<div v-for="(good,index2) in store.list" class="good-item-box">
 							<dl class="good-item row-l">
 								<dt @click="singleCheck(store,index2)" :class="{'storeActive':good.checked}"></dt>
 								<dd class="row-l">
@@ -21,12 +22,11 @@
 									<div class="good-info">
 										<p class="title">{{good.goodTitle}}</p>
 										<div class="attr row-l">
-											<span>{{good.goodColor}}</span>
-											<span>{{good.goodSize}}</span>
+											<span v-for="size in good.goodSize">{{size}}</span>
 										</div>
 										<div class="row-lr dd-bot">
-											<b class="good-price">￥{{good.goodPrice}}</b>
-											<p class="row-l"><em @click="reduceNum(index1,index2)"></em><span>{{good.goodNumber}}</span><em @click="addNum(index1,index2)"></em></p>
+											<b class="good-price" :data="good.goodId">￥{{good.goodPrice}}</b>
+											<p class="row-l"><em @click="reduceNum(index1,index2)"></em><span>{{good.goodNum}}</span><em @click="addNum(index1,index2)"></em></p>
 										</div>
 									</div>
 								</dd>
@@ -34,7 +34,7 @@
 							<div class="row-c good-item-bot">
 								<div class="row-l zk-jifen">
 									<span>折扣积分：</span>
-									<p class="row-l"><em></em><span>200</span><em></em></p>
+									<p class="row-l"><em></em><span>{{good.goodScore}}</span><em></em></p>
 								</div>
 								<div class="xianjin">现金：<b>￥{{good.goodPrice}}</b></div>
 							</div>
@@ -85,11 +85,7 @@ export default {
       totalPrice:0,
       quanxuan:false,
       account:0,
-      fromstorelist:[
-			{title:'珍品皮鞋',price:0,id:0},
-			{title:'时尚西装',price:0,id:0},
-			{title:'青春靓丽装',price:0,id:0}
-		]
+      fromstorelist:[]
       
     }
   },
@@ -97,12 +93,26 @@ export default {
 			console.log()
   },
 activated(){
-	this.fromstorelist=this.$store.state.carGoodList;
+	
+	let data=this.$store.state.carGoodList;
+	data.forEach((el)=>{
+			this.$set(el,'checked',false);
+				el.list.forEach((el)=>{
+					this.$set(el,'checked',false);
+				})
+		})
+	this.fromstorelist=data;
+	console.log(this.fromstorelist)
+	
 	console.log(this.$store)
+	console.log('activated')
+	
+	$('#carBox').get(0).addEventListener('scroll',this.scrollFn)
+	
+  
+	
 },
   mounted(){
-
-//	console.log(this.list.length)
   		this.$http.get('src/assets/shopcar.json').then(res=>{
 				setTimeout(()=>{
 					console.log(res.body.shopLlist);
@@ -168,16 +178,16 @@ activated(){
   	},
   	reduceNum(n1,n2){//减少商品数量
 			console.log(n1,n2);
-			if(this.list[n1].goodsList[n2].goodNumber==1){
+			if(this.fromstorelist[n1].list[n2].goodNumber==1){
 				return;
 			}
-				this.list[n1].goodsList[n2].goodNumber--;
+				this.fromstorelist[n1].list[n2].goodNumber--;
 			this.allPrice();
 				
 		},
 		addNum(n1,n2){//添加商品数量
 			console.log(n1,n2)
-			this.list[n1].goodsList[n2].goodNumber++;
+			this.fromstorelist[n1].list[n2].goodNumber++;
 			this.allPrice();
 			
 		},
@@ -189,11 +199,11 @@ activated(){
 			}
 			console.log(store)
 			if(store.checked==true){
-				store.goodsList.forEach((el)=>{
+				store.list.forEach((el)=>{
 					this.$set(el,'checked',true);
 				})
 			}else{
-				store.goodsList.forEach((el)=>{
+				store.list.forEach((el)=>{
 					this.$set(el,'checked',false);
 				})
 			}
@@ -203,14 +213,14 @@ activated(){
 		},
 		singleCheck(store,n2){//单个选择商品
 			console.log(store)
-			let len=store.goodsList.length;
+			let len=store.list.length;
 			let n=0;
-			if(typeof store.goodsList[n2].checked==="undefined"){
-				this.$set(store.goodsList[n2],'checked',true);
+			if(typeof store.list[n2].checked==="undefined"){
+				this.$set(store.list[n2],'checked',true);
 			}else{
-				store.goodsList[n2].checked=!store.goodsList[n2].checked;
+				store.list[n2].checked=!store.list[n2].checked;
 			}	
-			store.goodsList.forEach((el)=>{
+			store.list.forEach((el)=>{
 				if(el.checked){
 					n++;
 				}
@@ -235,10 +245,10 @@ activated(){
 		allPrice(){//计算总价格方法
 //			this.totalPrice=0;
 			let singlePrice=0;
-			this.list.forEach((el,index)=>{
-				el.goodsList.forEach((el,index)=>{
+			this.fromstorelist.forEach((el,index)=>{
+				el.list.forEach((el,index)=>{
 					if(el.checked===true){
-						singlePrice+=el.goodNumber*el.goodPrice
+						singlePrice+=el.goodNum*el.goodPrice
 					}
 				})
 			})
@@ -247,18 +257,18 @@ activated(){
 		selectAll(){//全选功能
 			this.quanxuan=!this.quanxuan;
 			if(this.quanxuan==true){
-				this.list.forEach((el)=>{
+				this.fromstorelist.forEach((el)=>{
 					el.checked=true;
 					
-					el.goodsList.forEach((el)=>{
+					el.list.forEach((el)=>{
 						el.checked=true;
 					})
 				})	
 			}else{
-				this.list.forEach((el)=>{
+				this.fromstorelist.forEach((el)=>{
 					el.checked=false;
 					
-					el.goodsList.forEach((el)=>{
+					el.list.forEach((el)=>{
 						el.checked=false;
 					})
 				})	
@@ -267,9 +277,9 @@ activated(){
 			this.acc();
 		},
 		storeNum(){
-			let storeN=this.list.length;
+			let storeN=this.fromstorelist.length;
 			let n=0;
-			this.list.forEach((el)=>{
+			this.fromstorelist.forEach((el)=>{
 				if(el.checked==true){
 					n++;
 				}
@@ -282,15 +292,34 @@ activated(){
 		},
 		acc(){
 			let accNum=0;
-			this.list.forEach((el)=>{
-				el.goodsList.forEach((el)=>{
+			this.fromstorelist.forEach((el)=>{
+				el.list.forEach((el)=>{
 					if(el.checked==true){
 						accNum++;
 					}
 				})
 			})
 			this.account=accNum;
+		},
+		scrollFn(){
+			var boxH=$('.mui-content').get(0).scrollHeight;
+			var boxScrollH=$('.mui-content').scrollTop();
+			var boxClientH=$('.mui-content').get(0).offsetHeight;
+			console.log(boxH,boxScrollH,boxClientH)
+			if(boxScrollH+boxClientH==boxH){
+				console.log(123)
+				$('.tip-box').animate({'bottom':'-50px','opacity':1},300,function(el){
+					$('.tip-box').animate({'opacity':0},1500,function(){
+						$('.tip-box').animate({'bottom':'-100px'})
+					})
+				})
+				this.bot=true;
+			}else{
+				this.bot=false;
+				$('.tip-box').animate({'bottom':'-100px'},200)
+			}
 		}
+		
   }
   
 }
@@ -301,7 +330,9 @@ activated(){
 .mui-content{
 	height: calc(100vh - 50px);
 	overflow: auto;
+	
 }
+
 .car-head{
 	h1{
 		font-size: 18px;
@@ -313,6 +344,20 @@ activated(){
 }
 /*购物车商店*/
 .store-box{
+	position: relative;
+	overflow: hidden;
+	.tip-box{
+		width: 100%;
+		height: 100px;
+		position: absolute;
+		bottom: -100px;
+		left: 50%;
+		z-index: 1000;
+		transform: translateX(-50%);
+		background: rgba(55,104,215,0.5);
+		opacity: .2;
+		border-radius:50% ;
+	}
 	.store-item{
 		margin-bottom: 10px;
 		.storeActive{

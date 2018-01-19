@@ -1,16 +1,5 @@
 <template>
   <div class="jifenduihuan">
-  	
-  	<!--<div class="jf-banner">
-			<mt-swipe :auto="0">
-	    	<mt-swipe-item v-for="ban in banSrc">
-	    		<img :src="ban"/>
-	    	</mt-swipe-item>
-	    </mt-swipe>
-		</div>
-		<button @click="add" type="button" class="mui-btn mui-btn-blue mui-btn-block">添加</button>-->
-		
-		
 		<div class="jifen-list-box">
 			<mt-loadmore id="loadmore" topLoadingText="刷新页面" bottomLoadingText="数据加载中..." :top-method="top" :bottom-method="bottom" :bottom-all-loaded="stopNum" ref="loadmore"> 
 					<div class="jf-banner">
@@ -21,41 +10,18 @@
 				    </mt-swipe>
 					</div>
 					
-					<!--<router-link :to="{name:'detail',params:{user:'lili',id:456}}">跳到详情页</router-link>-->
-					<!--<button @click="add" type="button" class="mui-btn mui-btn-blue mui-btn-block">添加</button>-->
-					
-					
 					<transition-group tag="ul" name="list" class="jifen-list row-lr">
-					 <!--<ul class="jifen-list row-lr">-->
 					  <li v-for="(goodItem,index) in pIndex.goodsList" :key="index" class="jifen-list-item">
-					  	<!--<router-link to="">-->
-								<img @click="goDetail" :src="goodItem.goodsImg" alt="积分兑换商品" />
+								<img @click="goDetail(goodItem.goodId,goodItem.shopName)" :src="goodItem.goodsImg" :data="goodItem.goodId" alt="积分兑换商品" />
 								<h4 class="heading">真皮时尚皮鞋，品种款式任你挑选</h4>
-								<p>零售价：<strong>￥{{goodItem.price}}</strong></p>
+								<p>零售价：<strong>￥{{goodItem.goodPrice}}</strong></p>
 								<p class="row-l">
-									<span><b>￥{{goodItem.discount}}</b>+<b>{{goodItem.score}}</b></span>
+									<span><b>￥{{goodItem.goodPrice}}</b>+<b>{{goodItem.goodScore}}</b></span>
 									<span>折扣积分</span>
 								</p>
-								<!--<span @click="del(index)" class="del-good" style="padding: 5px 8px;background: deepskyblue;color: #fff;">删除</span>-->
-							<!--</router-link>-->
 						</li>
-					 <!--</ul>-->
 					 </transition-group>
 			</mt-loadmore>
-			
-			
-			
-			<!--<ul class="jifen-list row-lr">
-				<li v-for="goodItem in pIndex.goodsList" class="jifen-list-item">
-					<img :src="goodItem.goodsImg" alt="积分兑换商品" />
-					<h4 class="heading">真皮时尚皮鞋，品种款式任你挑选</h4>
-					<p>零售价：<strong>￥{{goodItem.price}}</strong></p>
-					<p class="row-l">
-						<span><b>￥{{goodItem.discount}}</b>+<b>{{goodItem.score}}</b></span>
-						<span>折扣积分</span>
-					</p>
-				</li>
-			</ul>-->
 		</div>
 		
   	
@@ -71,10 +37,12 @@ export default {
       msg: 'Welcome to Your Vue.js App',
       bannerSrc:[],
       goodOptin:{ 
-		 		"goodsImg":"http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/114/h/114",
-		 		"price":500,
-		 		"discount":300,
-		 		"score":200
+		 		"goodsImg":"http://fuss10.elemecdn.com/6/ad/779f8620ff49f701cd4c58f6448b6jpeg.jpeg?imageView2/1/w/180/h/180",
+		 		"goodPrice":91,
+		 		"goodScore":140,
+		 		"goodId":210,
+		 		"shopId":43,
+		 		"shopName":"小米手机旗舰店1"
 		 	},
 		 	stopNum:false,
 		 	stopIndex:0
@@ -102,7 +70,14 @@ export default {
   		setTimeout(()=>{
   			var arr=this.pIndex.goodsList;
 	  		for(var i=0;i<4;i++){
-	  			arr.push(this.goodOptin)
+	  			arr.push({ 
+				 		"goodsImg":"http://fuss10.elemecdn.com/6/ad/779f8620ff49f701cd4c58f6448b6jpeg.jpeg?imageView2/1/w/180/h/180",
+				 		"goodPrice":91+i,
+				 		"goodScore":140+i,
+				 		"goodId":210+i,
+				 		"shopId":43+i,
+				 		"shopName":"小米手机旗舰店"+i
+				 	})
 	  		}
   			this.$refs.loadmore.onBottomLoaded();
   			
@@ -119,12 +94,12 @@ export default {
   			
   		},200)
   	},
-  	goDetail(){//跳到详情页面
+  	goDetail(id,shopName){//跳到详情页面
+  		console.log(id,shopName)
   		this.$router.push({
   			name:'detail',
   			params:{
-  				user:'lihaohua',
-  				id:123
+  				id:id
   			}
   		});
   	},

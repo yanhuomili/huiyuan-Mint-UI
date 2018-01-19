@@ -26,6 +26,7 @@
 			    	</mt-swipe-item>
 			    </mt-swipe>
 				</div>
+			
 				<!--商品介绍-->
 				<div class="good-box">
 					<h3 class="good-title">{{good.goodTitle}}----{{a}}</h3>
@@ -142,7 +143,6 @@
 		
 		
 		
-		
   </div>
 </template>
 
@@ -170,13 +170,9 @@ export default {
     }
   },
   created(){
-  	console.log('created')
+  	console.log('created');
   },
   mounted(){
-  	
-
-  	
-  	
 //		console.log(this.$route)
   	this.options=this.$route.params.id;
   },
@@ -271,6 +267,35 @@ export default {
 		sureAddCar(){
 			console.log('已经加入购物车');
 			this.showAttrBox=false;
+			
+			//取颜色尺寸
+			var arr=[];
+			console.log(this.good.attrSelect);
+			this.good.attrSelect.forEach(function(el,index){
+				console.log(el)
+				el.options.forEach(function(el,index){
+					if(el.isSelect==1){
+						arr.push(el.text);
+					}
+				})
+			})
+			
+			var cargood={//商品对象
+				shopName:this.good.shopName,
+				list:[
+					{
+						goodTitle:this.good.goodTitle,
+						goodPrice:this.good.goodPrice,
+						goodScore:this.good.goodScore,
+						goodNum:this.buyNum,
+						goodImt:"",
+						goodSize:arr,
+						goodId:this.good.shopId,
+					}
+				]
+			};
+			//异步添加购物车	
+			this.$store.dispatch('syncAdd',cargood);
 		},
 		attrHide(){//隐藏商品属性面板
 			this.showAttrBox=false;
@@ -293,22 +318,22 @@ export default {
 			this.$router.push({name:'comment'})
 		}
   },
-  beforeRouteEnter (to, from, next) {
+  beforeRouteEnter (to, from, next) {//利用导航守卫来处理数据
          // 在渲染该组件的对应路由被 confirm 前调用
          // 不！能！获取组件实例 `this`
          // 因为当钩子执行前，组件实例还没被创建
-       	console.log(to)
        	//把当前的组件传递进去，跳到目标页面之后就可以获取目标页面的实例。
         next(detail=>{
         	detail.$http.get('/api/jifenDetail').then(res=>{
 						console.log(res.body.data.good);
 						detail.good=res.body.data.good;
-						console.log(detail.good);
+						if(typeof to.params.id!='undefined'){//判断是从列表页进来，还是从购物车返回
+							detail.good.shopName=detail.good.shopName+to.params.id;
+						}
+						console.log(detail.good.shopName)
 					},err=>{
 						console.log(err)
 					})
-        	
-        	
         	console.log(detail.a);
         	detail.a=to.params.id;
         	
@@ -370,9 +395,9 @@ a{
 	}
 	b{
 		display: flex;
-		width: 30px;
-		height: 25px;
-		margin-left: 10px;
+		width: 20px;
+		height: 20px;
+		margin: 0 10px;
 	}
 }
 .good-box{
