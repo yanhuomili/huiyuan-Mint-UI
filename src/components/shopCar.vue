@@ -67,7 +67,6 @@
 
 <script>
 import {Toast} from 'mint-ui'
-<<<<<<< HEAD
 import tProps from './testprops.vue'
 import {mapState} from 'vuex'
 import { mapGetters } from 'vuex'
@@ -81,31 +80,20 @@ export default {
   data () {
     return {
     	testNum:123,
-=======
-export default {
-  name: 'shopCar',
-  data () {
-    return {
->>>>>>> origin/master
       msg: 'Welcome to Your Vue.js App',
       list:[],
       totalPrice:0,
       quanxuan:false,
-<<<<<<< HEAD
       account:0,
       fromstorelist:[
 			{title:'珍品皮鞋',price:0,id:0},
 			{title:'时尚西装',price:0,id:0},
 			{title:'青春靓丽装',price:0,id:0}
 		]
-=======
-      account:0
->>>>>>> origin/master
       
     }
   },
   created(){
-<<<<<<< HEAD
 			console.log()
   },
 activated(){
@@ -114,11 +102,6 @@ activated(){
 },
   mounted(){
 
-=======
-
-  },
-  mounted(){
->>>>>>> origin/master
 //	console.log(this.list.length)
   		this.$http.get('src/assets/shopcar.json').then(res=>{
 				setTimeout(()=>{
@@ -140,7 +123,6 @@ activated(){
 			})
   },
   computed:{
-<<<<<<< HEAD
   	numbers(){
   		return 999
   	},
@@ -184,11 +166,6 @@ activated(){
   	addToCar(n){
   		this.$store.commit('addToCar',{title:'青春靓丽装',price:99999,id:88888})
   	},
-=======
-  	
-  },
-  methods:{
->>>>>>> origin/master
   	reduceNum(n1,n2){//减少商品数量
 			console.log(n1,n2);
 			if(this.list[n1].goodsList[n2].goodNumber==1){

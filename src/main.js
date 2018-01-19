@@ -1,10 +1,7 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-<<<<<<< HEAD
 import Vuex from 'vuex'
-=======
->>>>>>> origin/master
 import App from './App'
 import router from './router'
 import jquery from 'jquery'
@@ -18,10 +15,7 @@ import mui from 'mui'
 
 Vue.use(Mint)
 Vue.use(VueResource)
-<<<<<<< HEAD
 Vue.use(Vuex)
-=======
->>>>>>> origin/master
 
 Vue.config.productionTip = false
 router.beforeEach(function(to, from, next) {
@@ -31,7 +25,6 @@ router.beforeEach(function(to, from, next) {
 	next();
 })
 
-<<<<<<< HEAD
 //使用vuex来管理公共状态
 const store=new Vuex.Store({
 	state:{
@@ -77,21 +70,14 @@ const store=new Vuex.Store({
 
 
 
-=======
->>>>>>> origin/master
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   data:{
-<<<<<<< HEAD
 //	eve:new Vue()
   },
   router,
   store,
-=======
-  },
-  router,
->>>>>>> origin/master
   template: '<App/>',
   components: { App }
 })
