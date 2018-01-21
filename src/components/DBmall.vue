@@ -10,7 +10,7 @@
   	</header>
  		<div class="mui-content">
  		   <div class="db-nav row-lr">
-	 		   	<div class="menu-wrap ">
+	 		   	<div class="menu-wrap">
 		 		   		<ul class="db-nav-menu" v-if="dbList.length">
 		 		   			<li @click="changeMenu(index)" v-for="(item,index) in dbList" :class="{'active':index==showIndex}">{{item.title}}</li>
 		 		   		</ul>
@@ -108,6 +108,7 @@ export default {
   	console.log(123)
   },
   activated(){
+
   	console.log('activated')
   	if(this.dbList.length>0){
   		
@@ -125,6 +126,8 @@ export default {
 		  	var ulw=len*w;
 		  	console.log(len,w,ulw)
 		  	$('.menu-wrap ul').width(ulw);
+
+		  	
   		})
 			
 			
@@ -135,7 +138,41 @@ export default {
   },
   methods:{
   	changeMenu(index){
+  		var menuLi=$('.menu-wrap ul li');
+	  	var len=menuLi.length;
+	  	var w=menuLi.get(0).offsetWidth+0.5;
+	  	var ulw=len*w;
+	  	var boxW=$('.menu-wrap').get(0).offsetWidth-10;
+  		var maxW=ulw-boxW;
   		this.showIndex=index;
+  		if(index>=2){
+  			var n=index-2;
+  			var pxW=n*64;
+  			if(pxW>=maxW){
+  				pxW=maxW
+  			}
+
+ 				var old=$('.menu-wrap').scrollLeft()
+ 				var timer=setInterval(()=>{
+
+ 					if(old<=pxW){
+ 						old+=5;
+ 						$('.menu-wrap').scrollLeft(old);
+ 						if(old>=pxW){
+ 							clearInterval(timer)
+						}
+ 					}else{
+ 						old-=5;
+ 						$('.menu-wrap').scrollLeft(old);
+ 						if(old<=pxW){
+ 							clearInterval(timer)
+ 						}
+ 					}
+ 					
+ 					
+ 				},20)
+  			
+  		}
   	},
   	dbupdateFn(obj){
   		console.log(obj);
@@ -213,14 +250,19 @@ export default {
 		height: 50px;
 		overflow: hidden;
 		background: #fff;
-		
 		.menu-wrap{
 			overflow-x: auto;
 			width: 88%;
+			height: 52px;
+			/*position: relative;*/
 			border-right: 1px solid #ccc;
 			ul{
 				margin: 5px;
 				overflow: hidden;
+				/*position: absolute;*/
+				/*top: 5px;*/
+				/*left: 0;*/
+				/*transform: translateX(-80px);*/
 				li{
 					padding: 5px 15px;
 					float: left;
