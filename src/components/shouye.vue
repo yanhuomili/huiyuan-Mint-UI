@@ -152,14 +152,14 @@ export default {
     }
   },
   mounted(){
-	console.log(mui)
+//	console.log(mui)
   },
   methods:{
   	fn(){
   		console.log(this.$refs.myswiper.index)
   	},
   	db(){
-  		this.$router.push('/test')
+  		this.$router.push('/DBmall')
   	},
   	toggle(){
   		this.showt=!this.showt;

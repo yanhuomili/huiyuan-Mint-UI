@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import footTab from '@/components/footTab'
 import shouye from '@/components/shouye'
-import test from '@/components/test'
+import DBmall from '@/components/DBmall'
 import baiye from '@/components/baiye'
 import jifen from '@/components/jifen'
 import detail from '@/components/detail'
@@ -24,13 +24,9 @@ export default new Router({
       component: shouye
     },
     {
-      path: '/test',
-      component: test,
-      children:[
-      	{path:'/test/shouye',component:shouye},
-      	{path:'/test/HelloWorld',component:HelloWorld},
-      	{path:"*",redirect:'/test/HelloWorld'}
-      ]
+      path: '/DBmall',
+      component: DBmall,
+      name:'DBmall'
     },
 		{
       path: '/HelloWorld',

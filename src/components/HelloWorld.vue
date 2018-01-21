@@ -15,7 +15,7 @@
 
 <script>
 import {Toast} from 'mint-ui'
-import Test from './test'
+import Test from './DBmall'
 export default {
   name: 'HelloWorld',
   components:{

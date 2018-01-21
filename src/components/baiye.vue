@@ -102,6 +102,7 @@
 
 <script>
 import {Toast} from 'mint-ui'
+import mui from 'mui'
 export default {
   name: 'test',
   data () {
@@ -159,6 +160,10 @@ export default {
 //		})
 //		
 //		console.log(this.scrollFn);
+  },
+  deactivated(){
+  	console.log(132)
+  	window.removeEventListener('scroll',this.scrollFn)
   },
   methods:{
   	scrollFn(){

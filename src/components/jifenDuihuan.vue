@@ -1,8 +1,8 @@
 <template>
   <div class="jifenduihuan">
 		<div class="jifen-list-box">
-			<mt-loadmore id="loadmore" topLoadingText="刷新页面" bottomLoadingText="数据加载中..." :top-method="top" :bottom-method="bottom" :bottom-all-loaded="stopNum" ref="loadmore"> 
-					<div class="jf-banner">
+			<mt-loadmore id="loadmore" topLoadingText="刷新页面" bottomLoadingText="数据加载中..." :top-method="topLoad" :bottom-method="bottomLoad" :bottom-all-loaded="stopNum" ref="loadmore"> 
+					<div class="jf-banner" v-if="banSrc">
 							<mt-swipe :auto="0">
 				    	<mt-swipe-item v-for="ban in banSrc" :key="ban">
 				    		<img :src="ban"/>
@@ -61,25 +61,36 @@ export default {
   	add(){//添加轮播图片
   		var arr=this.$props.banSrc.unshift("http://fuss10.elemecdn.com/8/71/c5cf5715740998d5040dda6e66abfjpeg.jpeg?imageView2/1/w/180/h/180");
   	},
-  	top(){//下拉刷新
+  	topLoad(){//下拉刷新
   		setTimeout(()=>{
   			this.$refs.loadmore.onTopLoaded();
   		},200)
   	},
-  	bottom(){//上拉加载更多
+  	bottomLoad(){//上拉加载更多
+  		var obj={
+			 		"goodsImg":"http://fuss10.elemecdn.com/6/ad/779f8620ff49f701cd4c58f6448b6jpeg.jpeg?imageView2/1/w/180/h/180",
+			 		"goodPrice":99,
+			 		"goodScore":145,
+			 		"goodId":216,
+			 		"shopId":49,
+			 		"shopName":"小米手机旗舰店9"
+			 	}
+//		this.$emit('jifenLoadMore',obj);
+			this.$emit('dbLoadMore',obj);
+  		
   		setTimeout(()=>{
-  			var arr=this.pIndex.goodsList;
-	  		for(var i=0;i<4;i++){
-	  			arr.push({ 
-				 		"goodsImg":"http://fuss10.elemecdn.com/6/ad/779f8620ff49f701cd4c58f6448b6jpeg.jpeg?imageView2/1/w/180/h/180",
-				 		"goodPrice":91+i,
-				 		"goodScore":140+i,
-				 		"goodId":210+i,
-				 		"shopId":43+i,
-				 		"shopName":"小米手机旗舰店"+i
-				 	})
-	  		}
-  			this.$refs.loadmore.onBottomLoaded();
+//			var arr=this.pIndex.goodsList;
+//	  		for(var i=0;i<4;i++){
+//	  			arr.push({ 
+//				 		"goodsImg":"http://fuss10.elemecdn.com/6/ad/779f8620ff49f701cd4c58f6448b6jpeg.jpeg?imageView2/1/w/180/h/180",
+//				 		"goodPrice":91+i,
+//				 		"goodScore":140+i,
+//				 		"goodId":210+i,
+//				 		"shopId":43+i,
+//				 		"shopName":"小米手机旗舰店"+i
+//				 	})
+//	  		}
+//			this.$refs.loadmore.onBottomLoaded();
   			
   			
   			this.stopIndex=this.stopIndex+1;
@@ -108,7 +119,16 @@ export default {
   		console.log(this.pIndex.goodsList)
   	}
   	
-  }
+ },
+ watch:{
+ 	pIndex:{
+ 		handler(cur){
+			this.$refs.loadmore.onBottomLoaded();
+ 			console.log(666666)
+ 		},
+ 		deep:true
+ 	}
+ }
   
 }
 </script>

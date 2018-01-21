@@ -27,7 +27,7 @@
  				<div class="wrap row-lr active">
 	 				<div v-for="item in goodList" class="con-item">
 	 					<transition name="fold">
-	 						<jifen-duihuan :banSrc="item.banner" :pIndex="item" v-if="chuan"></jifen-duihuan>
+	 						<jifen-duihuan @jifenLoadMore="updateJifen" :banSrc="item.banner" :pIndex="item" v-if="chuan" ref="duihuan"></jifen-duihuan>
 	 					</transition>
 	 				</div>
 	 			</div>
@@ -182,6 +182,7 @@ export default {
 		console.log(response.body.data)
 		var data=response.body.data.list;
 			this.goodList=data;
+			console.log(this.goodList)
 //			this.chuan=true;
 //			this.banner=this.goodList.banner;
 			setTimeout(()=>{
@@ -207,6 +208,20 @@ export default {
   	},
   	search(){
   		this.$router.push({name:'jifenSearch'})
+  	},
+  	updateJifen(obj){
+  		var arr=this.goodList[this.menuIndex].goodsList;
+  		for(var i=0;i<5;i++){
+	  			arr.push({ 
+				 		"goodsImg":"http://fuss10.elemecdn.com/6/ad/779f8620ff49f701cd4c58f6448b6jpeg.jpeg?imageView2/1/w/180/h/180",
+				 		"goodPrice":91+i,
+				 		"goodScore":140+i,
+				 		"goodId":210+i,
+				 		"shopId":43+i,
+				 		"shopName":"小米手机旗舰店"+i
+				 	})
+	  		}
+//		this.$refs.duihuan[this.menuIndex].$refs.loadmore.onBottomLoaded();
   	}
   },
   destroyed(){
