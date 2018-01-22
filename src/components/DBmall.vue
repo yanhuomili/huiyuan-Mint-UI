@@ -23,7 +23,32 @@
  		   <div class="db-content">
  		   		<div class="db-wrap" v-if="dbList.length">
 	 		   		<div class="db-item" :class="{'active':index==showIndex}" v-for="(item,index) in dbList">
-	 		   			<good-list @dbLoadMore="dbupdateFn" :pIndex="item" ref="updateDb"></good-list>
+	 		   			
+	 		   			<good-list @dbLoadMore="dbupdateFn" :pIndex="item" ref="updateDb">
+	 		   				<div slot="tuijanBan" v-if="index==0">
+	 		   					<div class="dbBan">
+	 		   						<img src="../assets/img/dbmall_home_banner_one.png"/>
+	 		   					</div>
+		 		   				<div class="hot-brand">
+		 		   					<h4>热门品牌</h4>
+		 		   					<div class="mui-row">
+		 		   						<div class="mui-col-xs-3"><img src="../assets/img/dbmall_home_brand_1.png"/></div>
+		 		   						<div class="mui-col-xs-3"><img src="../assets/img/dbmall_home_brand_2.png"/></div>
+		 		   						<div class="mui-col-xs-3"><img src="../assets/img/dbmall_home_brand_3.png"/></div>
+		 		   						<div class="mui-col-xs-3"><img src="../assets/img/dbmall_home_brand_4.png"/></div>
+		 		   						<div class="mui-col-xs-3"><img src="../assets/img/dbmall_home_brand_5.png"/></div>
+		 		   						<div class="mui-col-xs-3"><img src="../assets/img/dbmall_home_brand_6.png"/></div>
+		 		   						<div class="mui-col-xs-3"><img src="../assets/img/dbmall_home_brand_7.png"/></div>
+		 		   						<div class="mui-col-xs-3"><img src="../assets/img/dbmall_home_brand_8.png"/></div>
+		 		   						<div class="mui-col-xs-3"><img src="../assets/img/dbmall_home_brand_9.png"/></div>
+		 		   						<div class="mui-col-xs-3"><img src="../assets/img/dbmall_home_brand_10.png"/></div>
+		 		   						<div class="mui-col-xs-3"><img src="../assets/img/dbmall_home_brand_11.png"/></div>
+		 		   						<div class="mui-col-xs-3"><img src="../assets/img/dbmall_home_brand_12.png"/></div>
+		 		   					</div>
+		 		   				</div>
+		 		   				<h3 class="guess-like">猜你喜欢</h3>
+		 		   			</div>
+	 		   			</good-list>
 	 		   		</div>
  		   		</div>
  		   		
@@ -200,28 +225,28 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/  
-::-webkit-scrollbar  
+/*::-webkit-scrollbar  
 {  
-    width: 5px;  
+    width: 0;  
     height: 5px;  
     background-color: #f3f3f3;  
-}  
+}  */
   
 /*定义滚动条轨道 内阴影+圆角*/  
-::-webkit-scrollbar-track  
+/*::-webkit-scrollbar-track  
 {  
     -webkit-box-shadow: inset 0 0 1px rgba(0,0,0,0);  
     border-radius: 10px;  
     background-color: #F5F5F5;  
-}  
+}  */
   
 /*定义滑块 内阴影+圆角*/  
-::-webkit-scrollbar-thumb  
+/*::-webkit-scrollbar-thumb  
 {  
     border-radius: 10px;  
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);  
     background-color: #f8f8f8;  
-} 
+} */
 .mui-bar-nav{
 	box-shadow: none;
 	border-bottom: 1px solid #eee;
@@ -302,5 +327,43 @@ export default {
 				display: block;
 			}
 		}
+	}
+	.dbBan{
+		width: 100%;
+		img{
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+	}
+	.hot-brand{
+		background: #fff;
+		margin-bottom: 20px;
+		h4{
+			width: 100%;
+			padding: 15px;
+			border-bottom: 1px solid #ccc;
+			text-align: center;
+		}
+		width: 100%;
+		.mui-col-xs-3{
+			width: 25%;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			img{
+				/*display: block;*/
+				width: 100% !important;
+				height: 100% !important;
+			}
+		}
+		
+	}
+	.guess-like{
+		text-align: center;
+		margin: 30px 0 ;
+		font-size: 18px;
+		
+		
 	}
 </style>

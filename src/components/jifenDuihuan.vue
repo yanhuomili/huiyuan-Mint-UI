@@ -9,6 +9,8 @@
 				    	</mt-swipe-item>
 				    </mt-swipe>
 					</div>
+					<slot name="tuijanBan">
+					</slot>
 					
 					<transition-group tag="ul" name="list" class="jifen-list row-lr">
 					  <li v-for="(goodItem,index) in pIndex.goodsList" :key="index" class="jifen-list-item">
@@ -75,7 +77,7 @@ export default {
 			 		"shopId":49,
 			 		"shopName":"小米手机旗舰店9"
 			 	}
-//		this.$emit('jifenLoadMore',obj);
+		this.$emit('jifenLoadMore',obj);
 			this.$emit('dbLoadMore',obj);
   		
   		setTimeout(()=>{

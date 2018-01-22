@@ -12,6 +12,7 @@ import buy from '@/components/buy'
 import comment from '@/components/comment'
 import store from '@/components/store'
 import jifenSearch from '@/components/jifen-search'
+import superMarket from '@/components/supermarket'
 
 //import jfDuihuan from '@/components/jfDuihuan'
 //import xianjinDuihuan from '@/components/xianjinDuihuan'
@@ -73,6 +74,12 @@ export default new Router({
     	path:'/jifenSearch',
     	name:'jifenSearch',
     	component:jifenSearch
+    },
+    {
+    	path:'/supermarket',
+    	name:'supermarket',
+    	component:superMarket
     }
+    
   ]
 })

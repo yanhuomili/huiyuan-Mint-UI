@@ -37,7 +37,7 @@
   			<img src="../assets/img/icon_homepage_dbmall.png" alt="" />
   			<span>DBMALL</span>
   		</li>
-  		<li class="col-c">
+  		<li @click="supermarket" class="col-c">
   			<img src="../assets/img/icon_homepage_shenghuochaoshi.png" alt="" />
   			<span>生活超市</span>
   		</li>
@@ -160,6 +160,9 @@ export default {
   	},
   	db(){
   		this.$router.push('/DBmall')
+  	},
+  	supermarket(){
+  		this.$router.push('/supermarket')
   	},
   	toggle(){
   		this.showt=!this.showt;

@@ -11,7 +11,6 @@ import 'mint-ui/lib/style.min.css'
 import '@/assets/css/mui.css'
 import '@/assets/css/reset.css'
 import '@/assets/fonts/mui.ttf'
-import mui from 'mui'
 
 Vue.use(Mint)
 Vue.use(VueResource)

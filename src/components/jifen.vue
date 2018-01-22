@@ -179,10 +179,8 @@ export default {
   	
   	//////////请求数据//////////////////
 	this.$http.get('/api/jiFen').then(response=>{
-		console.log(response.body.data)
 		var data=response.body.data.list;
 			this.goodList=data;
-			console.log(this.goodList)
 //			this.chuan=true;
 //			this.banner=this.goodList.banner;
 			setTimeout(()=>{
@@ -191,6 +189,10 @@ export default {
 	},response=>{
 	})
 	
+  },
+  activated(){
+		  	
+  	
   },
   methods:{
   	tip(){

@@ -24,6 +24,8 @@ export default {
       tt:0
     }
   },
+  components:{
+  },
   props:['ttProps'],
   mounted(){
 //	console.log(this.eve)
