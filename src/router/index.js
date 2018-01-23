@@ -13,6 +13,12 @@ import comment from '@/components/comment'
 import store from '@/components/store'
 import jifenSearch from '@/components/jifen-search'
 import superMarket from '@/components/supermarket'
+import safe from '@/components/safe'
+import share from '@/components/share'
+import register from '@/components/register'
+import qianggou from '@/components/qianggou'
+import qiangjifen from '@/components/qiangjifen'
+import baiyeShop from '@/components/baiyeShop'
 
 //import jfDuihuan from '@/components/jfDuihuan'
 //import xianjinDuihuan from '@/components/xianjinDuihuan'
@@ -79,7 +85,36 @@ export default new Router({
     	path:'/supermarket',
     	name:'supermarket',
     	component:superMarket
+    },
+    {
+    	path:'/safe',
+    	name:'safe',
+    	component:safe
+    },
+    {
+    	path:'/share',
+    	name:'share',
+    	component:share
+    },
+    {
+    	path:'/register',
+    	name:'register',
+    	component:register
+    },
+    {
+    	path:'/qianggou',
+    	name:'qianggou',
+    	component:qianggou
+    },
+    {
+    	path:'/qiangjifen',
+    	name:'qiangjifen',
+    	component:qiangjifen
+    },
+    {
+    	path:'/baiyeShop',
+    	name:'baiyeShop',
+    	component:baiyeShop
     }
-    
   ]
 })

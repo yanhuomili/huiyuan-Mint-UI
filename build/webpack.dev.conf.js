@@ -17,6 +17,7 @@ var jifenDetail = require('../mock/detail.json')//积分商城详情页面
 var jiFen = require('../mock/jifen.json')//积分商城页面数据
 var dbmall = require('../mock/dbmall.json')//积分商城页面数据
 var supermarket = require('../mock/supermarket.json')//生活超市
+var safedata = require('../mock/safedata.json')//保险平台
 var seller = appData.seller//获取对应的本地数据
 //var goods = appData.indexData
 //var ratings = appData.ratings
@@ -100,6 +101,11 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     res.json({
       errno: 0,
       data: supermarket
+    })
+  }),app.get('/api/safedata', (req, res) => {
+    res.json({
+      errno: 0,
+      data: safedata
     })
   })
   

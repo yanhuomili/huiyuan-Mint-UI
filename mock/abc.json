@@ -1,0 +1,52 @@
+{
+	"list":[
+		{
+		"title":"特农产品",
+		"id":2,
+		 "goodsList":[
+		 	{ 
+		 		"goodsImg":"src/assets/img/dbmall_classify_majiabeixin.png",
+		 		"goodPrice":60,
+		 		"goodScore":120,
+		 		"goodId":230,
+		 		"shopId":545,
+		 		"shopName":"清爽夏装，T恤中裤任你挑选"
+		 	},
+		 	{ 
+		 		"goodsImg":"src/assets/img/dbmall_classify_fengyidayi.png",
+		 		"goodPrice":351,
+		 		"goodScore":80,
+		 		"goodId":135,
+		 		"shopId":59,
+		 		"shopName":"清爽夏装，T恤中裤任你挑选"
+		 	},
+		 	{ 
+		 		"goodsImg":"src/assets/img/dbmall_classify_duanku.png",
+		 		"goodPrice":211,
+		 		"goodScore":38,
+		 		"goodId":130,
+		 		"shopId":94,
+		 		"shopName":"清爽夏装，T恤中裤任你挑选"
+		 	},
+		 	{ 
+		 		"goodsImg":"src/assets/img/dbmall_classify_chenshan.png",
+		 		"goodPrice":191,
+		 		"goodScore":16,
+		 		"goodId":190,
+		 		"shopId":170,
+		 		"shopName":"清爽夏装，T恤中裤任你挑选"
+		 	},
+		 	{ 
+		 		"goodsImg":"src/assets/img/dbmall_classify_poloshan.png",
+		 		"goodPrice":361,
+		 		"goodScore":23,
+		 		"goodId":200,
+		 		"shopId":27,
+		 		"shopName":"清爽夏装，T恤中裤任你挑选"
+		 	}
+		 ]
+		}
+	
+	]
+}
+

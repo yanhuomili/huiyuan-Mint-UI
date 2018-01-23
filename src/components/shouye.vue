@@ -5,14 +5,6 @@
   		<p class="row-c"><span>广州</span><b><img src="../assets/img/down.png"/></b></p>
   		<i><img src="../assets/img/kuang.png"/></i>
   	</div>
-  	<button @click="toggle" type="button" class="mui-btn mui-btn-blue mui-btn-block">按钮</button>
-  	
-  	
-  	
-  	<div class="row-lr">
-  		<p>9999</p>
-  		<p>8888</p>
-  	</div>
   	<!--轮播图-->
   	<div id="sy-banner">
 	  	<mt-swipe @change="fn" ref="myswiper" :auto="0" class="banner-swiper" :speed="200">
@@ -41,7 +33,7 @@
   			<img src="../assets/img/icon_homepage_shenghuochaoshi.png" alt="" />
   			<span>生活超市</span>
   		</li>
-  		<li class="col-c">
+  		<li @click="safe" class="col-c">
   			<img src="../assets/img/icon_homepage_baoxianpingtai.png" alt="" />
   			<span>保险平台</span>
   		</li>
@@ -53,10 +45,10 @@
   	</transition>
   	<!--活动专区-->
   	<ul class="row-l imgs">
-  		<li><img src="../assets/img/团购.png"/></li>
-  		<li><img src="../assets/img/抢积分.png"/></li>
-  		<li><img src="../assets/img/抢购.png"/></li>
-  		<li><img src="../assets/img/注册有奖.png"/></li>
+  		<li><router-link to="/share"><img src="../assets/img/团购.png"/></router-link></li>
+  		<li><router-link to="/qiangjifen"><img src="../assets/img/抢积分.png"/></router-link></li>
+  		<li><router-link to="/qianggou"><img src="../assets/img/抢购.png"/></router-link></li>
+  		<li><router-link to="/register"><img src="../assets/img/注册有奖.png"/></router-link></li>
   	</ul>
   	
   	<!--商品推荐-->
@@ -164,6 +156,9 @@ export default {
   	supermarket(){
   		this.$router.push('/supermarket')
   	},
+  	safe(){
+  		this.$router.push('/safe')
+  	},
   	toggle(){
   		this.showt=!this.showt;
   	},
@@ -227,16 +222,16 @@ dl{
 	color: #333 !important;
 	background: #fff;
 	em{
-		width: 30px;
-		height: 30px;
+		width: 20px;
+		height: 20px;
 	}
 	b{
 		width: 20px;
 		margin-left: 5px;
 	}
 	i{
-		width: 30px;
-		height: 30px;
+		width: 20px;
+		height: 20px;
 	}
 	span{
 		/*color: #333;*/

@@ -67,24 +67,26 @@
  		  	
  		  	<div class="good-content">
  		  		<div class="dl-list">
- 		  			<dl class="row-lr" v-for="item in 5">
- 		  				<dt>
- 		  					<img src="../assets/img/baiyeshangpin_img.png"/>
- 		  				</dt>
- 		  				<dd>
- 		  					<h4 class="dd-heading">
- 		  						好再来蛋糕店
- 		  					</h4>
- 		  					<div class="star">
- 		  						<em v-for="item in 5"></em>
- 		  					</div>
- 		  					<p>111人消费</p>
- 		  					<p class="row-lr"><span>江夏</span><span>距离1.1km</span></p>
- 		  					<p class="p-bot row-l">
- 		  						<em><img src="../assets/img/icon_phone.png"/></em><span>好再来千层蛋糕8英寸只需60元好再来千层蛋糕8英寸只需60元</span>
- 		  					</p>
- 		  				</dd>
- 		  			</dl>
+ 		  			<router-link to="/baiyeShop">
+	 		  			<dl class="row-lr" v-for="item in 5">
+	 		  				<dt>
+	 		  					<img src="../assets/img/baiyeshangpin_img.png"/>
+	 		  				</dt>
+	 		  				<dd>
+	 		  					<h4 class="dd-heading">
+	 		  						好再来蛋糕店
+	 		  					</h4>
+	 		  					<div class="star">
+	 		  						<em v-for="item in 5"></em>
+	 		  					</div>
+	 		  					<p>111人消费</p>
+	 		  					<p class="row-lr"><span>江夏</span><span>距离1.1km</span></p>
+	 		  					<p class="p-bot row-l">
+	 		  						<em><img src="../assets/img/icon_phone.png"/></em><span>好再来千层蛋糕8英寸只需60元好再来千层蛋糕8英寸只需60元</span>
+	 		  					</p>
+	 		  				</dd>
+	 		  			</dl>
+	 		  		</router-link>
  		  		</div>
  		  	</div>
  		  </div>

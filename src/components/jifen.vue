@@ -181,6 +181,7 @@ export default {
 	this.$http.get('/api/jiFen').then(response=>{
 		var data=response.body.data.list;
 			this.goodList=data;
+			console.log(data)
 //			this.chuan=true;
 //			this.banner=this.goodList.banner;
 			setTimeout(()=>{
