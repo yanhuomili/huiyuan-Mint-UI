@@ -56,7 +56,7 @@
    		<!--热门兑换商品-->
    		<div class="goods-list-item">
    			<mt-cell class="item-top" is-link title="热门兑换商品">
-				  <img slot="icon" src="../assets/img/icon_homepage_duihuan.png" width="24px" height="24px">
+				  <img slot="icon" src="../assets/img/icon_homepage_duihuan.png" width="20px" height="20px">
 				</mt-cell>
    			<ul class="item-ul row-lr">
    				<li v-for="i in 4">
@@ -74,7 +74,7 @@
    		<!--热门折扣商品-->
    		<div class="goods-list-item">
    			<mt-cell class="item-top" is-link title="热门折扣商品">
-				  <img slot="icon" src="../assets/img/icon_homepage_zhekou.png" width="24px" height="24px">
+				  <img slot="icon" src="../assets/img/icon_homepage_zhekou.png" width="20px" height="20px">
 				</mt-cell>
    			<ul class="item-ul row-lr">
    				<li v-for="i in 4">
@@ -93,7 +93,7 @@
    		<!--附近实惠-->
    		<div class="goods-list-item">
    			<mt-cell class="item-top" is-link title="热门折扣商品">
-				  <img slot="icon" src="../assets/img/icon_homepage_zhekou.png" width="24px" height="24px">
+				  <img slot="icon" src="../assets/img/icon_homepage_zhekou.png" width="20px" height="20px">
 				</mt-cell>
 				<transition-group tag="div" name="list" class="list-dl">
 				<!--<div class="list-dl">-->
@@ -430,4 +430,8 @@ dl{
 		border-radius: 0 ;
 	}
 }	
+
+.mint-cell:first-child .mint-cell-wrapper{
+	background-image: none !important;
+}
 </style>

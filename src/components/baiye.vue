@@ -35,7 +35,7 @@
  		  	</ul>
  		  </div>
  		  
- 		  <div class="good-list">
+ 		  <div class="good-list" v-if="allData.length>0">
  		  	<div :class="{'top-menu-box':bind,'fixed-box':fixedMenu==1}">
 	 		  	<ul class="top-menu row-lr">
 	 		  		<li v-for="(i,index) in allData" @click="showMenu(index,$event)" ref="showMenu" class="row-c">
@@ -134,10 +134,10 @@ export default {
   },
   mounted(){
 //	遮罩层
-		this.mask = mui.createMask(()=>{
-			this.itemShow='-1';
-			$('body').css({'height':'100%','overflow':'auto'})
-		})
+//		this.mask = mui.createMask(()=>{
+//			this.itemShow='-1';
+//			$('body').css({'height':'100%','overflow':'auto'})
+//		})
 		//获取数据
 		this.$http.get('src/assets/baiye.json').then(response => {
         var all=response.data.all;
@@ -181,12 +181,12 @@ export default {
   		var newIndex=index;
   		if(oddIndex==newIndex){
   			this.itemShow=-1;
-  			this.mask.close();
+//			this.mask.close();
   			$('body').css({'height':'100%','overflow':'auto'})
   			return;
   		}
 			this.itemShow=index;
-			this.mask.show()
+//			this.mask.show()
 			$('body').css({'height':'100%','overflow':'hidden'})
   		var target=ev.target
   		var parent=$(target).parents('ul').next();
@@ -199,7 +199,7 @@ export default {
   	selected(i){
   		this.selectIndex=i;
   		this.itemShow=-1;
-  		this.mask.close();
+//		this.mask.close();
   		$('body').css({'height':'100%','overflow':'auto'})
   	},
   	toast(index,ev){

@@ -19,6 +19,8 @@ import register from '@/components/register'
 import qianggou from '@/components/qianggou'
 import qiangjifen from '@/components/qiangjifen'
 import baiyeShop from '@/components/baiyeShop'
+import baiyeShopDetail from '@/components/baiyeShopDetail'
+import baiyeOrder from '@/components/baiyeOrder'
 
 //import jfDuihuan from '@/components/jfDuihuan'
 //import xianjinDuihuan from '@/components/xianjinDuihuan'
@@ -115,6 +117,17 @@ export default new Router({
     	path:'/baiyeShop',
     	name:'baiyeShop',
     	component:baiyeShop
+    },
+    {
+    	path:'/baiyeShopDetail',
+    	name:'baiyeShopDetail',
+    	component:baiyeShopDetail
+    },
+    {
+    	path:'/baiyeOrder',
+    	name:'baiyeOrder',
+    	component:baiyeOrder
     }
+    
   ]
 })

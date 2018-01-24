@@ -1,5 +1,5 @@
 <template>
-  <div class="baiyeShop modal-show">
+  <div class="baiyeShopDetail modal-show">
   	<header class="mui-bar mui-bar-nav">
   	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
   	    <a class="mui-pull-right collect-btn">
@@ -16,15 +16,10 @@
  				<div class="by-banner">
 					<img src="../assets/img/img.png"/>
 				</div>
-				<div class="shopName">
-					<h4>淼鑫猪肚鸡</h4>
-					<p>
-						<img src="../assets/img/icon_evaluate_red.png"/>
-						<img src="../assets/img/icon_evaluate_red.png"/>
-						<img src="../assets/img/icon_evaluate_red.png"/>
-						<img src="../assets/img/icon_evaluate_red.png"/>
-						<img src="../assets/img/icon_evaluate_red.png"/>
-					</p>
+				<div class="infoDetail text-center">
+					<h3>滋补杨洋2-3人套餐</h3>
+					<p class="row-c"><span>￥108</span><em>门市价：￥150</em></p>
+					<p>可用积分：200 消费后赠送108积分</p>
 				</div>
 				<dl class="pos row-lr">
 					<dt class="row-l">
@@ -39,34 +34,38 @@
 				</dl>
  			</div>
 			<dl class="action">
-				<dt>店铺活动</dt>
+				<dt>购买须知</dt>
 				<dd>
-					<h5>春节期间，本店一律八折起</h5>
-					<p>活动时间：2月15-2-30</p>
+					<ul>
+						<li>
+							<p>有效期：</p>
+							<span>2017.12-2018.2(周末、法定节假日通用)</span>
+						</li>
+						<li>
+							<p>使用时间：</p>
+							<span>10:00-20:00</span>
+						</li>
+						<li>
+							<p>使用规则：</p>
+							<span>无需预约，消费高峰时可能需要等位</span>
+							<span>每张内消费劵建议2至3人使用</span>
+							<span>不提供餐巾纸巾</span>
+							<span>店内无包厢</span>
+							<span>仅限食堂，不提供餐前外带，餐毕未吃完可打包，打包费请咨询商家</span>
+							<span>无需预约，消费高峰时可能需要等位</span>
+							<span>每张内消费劵建议2至3人使用</span>
+							<span>不提供餐巾纸巾</span>
+							<span>店内无包厢</span>
+							<span>仅限食堂，不提供餐前外带，餐毕未吃完可打包，打包费请咨询商家</span>
+							<span>无需预约，消费高峰时可能需要等位</span>
+							<span>每张内消费劵建议2至3人使用</span>
+							<span>不提供餐巾纸巾</span>
+							<span>店内无包厢</span>
+							<span>仅限食堂，不提供餐前外带，餐毕未吃完可打包，打包费请咨询商家</span>
+						</li>
+					</ul>
 				</dd>
 			</dl>
-			<div class="jingxuan">
-				<ul class="mui-table-view">
-				    <li class="mui-table-view-cell mui-media" v-for="item in 3">
-				        <a href="javascript:;">
-				            <img class="mui-media-object mui-pull-left" src="../assets/img/baiyeshangpin_img.png">
-				            <div class="mui-media-body">
-				                <h4>2-3人滋补养颜套餐</h4>
-				                <div class="mui-ellipsis">
-				                	<p class="row-lr">
-				                		<span class="sell">可用积分：20</span>
-				                		<span class="rest">已售13</span>
-				                	</p>
-				                	<p class="row-lr">
-				                		<span><b class="cur-price">￥200</b></span>
-				                		<i>消费后赠送108积分</i>
-				                	</p>
-				                </div>
-				            </div>
-				        </a>
-				    </li>
-				</ul>
-			</div>
 			
 			<dl class="pingjia">
 				<dt @click="goComment" class="row-lr">
@@ -109,42 +108,18 @@
 			
 			
 			<dl class="shopoInfo">
-				<dt>商家信息</dt>
+				<dt>图文详情</dt>
 				<dd>
-					营业时间：周一至周日 9:00-18:00
+					<img src="../assets/img/shopdetail-1_03.png"/>
+					<img src="../assets/img/shopdetail-1_05.png"/>
+					<img src="../assets/img/shopdetail-1_06.png"/>
+					<img src="../assets/img/shopdetail-1_03.png"/>
+					<img src="../assets/img/shopdetail-1_05.png"/>
+					<img src="../assets/img/shopdetail-1_06.png"/>
 				</dd>
 			</dl>
  		  
- 		  <div class="good-list">
- 		  	<h2>附件同类商家</h2>
- 		  	<div class="good-content">
- 		  		<div class="dl-list">
- 		  			<dl @click="gotoDetail(index)" class="row-lr" v-for="(item,index) in 5">
- 		  				<dt>
- 		  					<img src="../assets/img/baiyeshangpin_img.png"/>
- 		  				</dt>
- 		  				<dd>
- 		  					<h4 class="dd-heading">
- 		  						好再来蛋糕店
- 		  					</h4>
- 		  					<div class="star">
- 		  						<em v-for="item in 5"><img src="../assets/img/icon_evaluate_red.png"/></em>
- 		  					</div>
- 		  					<p>111人消费</p>
- 		  					<p class="row-lr"><span>江夏</span><span>距离1.1km</span></p>
- 		  				</dd>
- 		  			</dl>
- 		  		</div>
- 		  	</div>
- 		  </div>
- 		    
- 		
-		  	
-		  	
-		  	
-		  	
-		  	
-			
+ 		  <div class="buy"><router-link to="/baiyeOrder">立即购买</router-link></div>
 		</div>
   </div>
 </template>
@@ -153,7 +128,7 @@
 import {Toast} from 'mint-ui'
 import mui from 'mui'
 export default {
-  name: 'baiyeShop',
+  name: 'baiyeShopDetail',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
@@ -164,11 +139,8 @@ export default {
   deactivated(){
   },
   methods:{
-  	gotoDetail(id){
-  		this.$router.push('/baiyeShopDetail');
-  	},
   	goComment(){
-  		this.$router.push('/comment');
+  		this.$router.push('/comment')
   	}
   },
   beforeDestroy(){
@@ -210,26 +182,32 @@ export default {
 			opacity: 1;
 		}
 	}
-	.shopName{
-		padding: 10px;
+	.infoDetail{
+		text-align: center;
 		background: #fff;
-		border-bottom: 1px solid #ccc;
-		h4{
+		padding: 15px 0;
+		margin-bottom: 10px;
+		h3{
+			font-weight: normal;
 			font-size: 18px;
-			margin-bottom: 10px;
 		}
 		p{
-			img{
-				width: 15px;
-				height: 15px;
-				margin-right: 5px;
-			}
+			margin: 10px 0;
+		}
+		em{
+			font-style: normal;
+		}
+		span{
+			font-size: 18px;
+			color: #D60A16;
+			margin-right: 10px;
 		}
 	}
 	.pos{
 		width: 100%;
 		padding: 10px;
 		background: #fff;
+		margin: 10px 0;
 		dt{
 			flex: 1;
 			img{
@@ -254,34 +232,41 @@ export default {
 .action{
 	width: 100%;
 	background: #fff;
+	margin: 10px 0;
 	dt{
 		padding: 10px;
 		border-bottom: 1px solid #ccc;
 		font-size: 16px;
 	}
 	dd{
-		padding: 10px;
-		position: relative;
-		h5{
-			font-size: 16px;
-			color: #333;
-		}
-		p{
-			font-size: 14px;
-			color: #666;
-			margin-top: 5px;
-		}
-		&:after{
-			content: "";
-			width: 10px;
-			height: 10px;
-			border: 2px solid transparent;
-			border-bottom-color: #ccc;
-			border-right-color: #ccc;
-			position: absolute;
-			top: 50%;
-			right: 25px;
-			transform: translateY(-50%) rotateZ(-45deg);
+		ul{
+			width: 100%;
+			padding: 15px;
+			li{
+				p{
+					color: #D60A16;
+					margin: 5px 0;
+					font-size: 15px;
+				}
+				span{
+					display: block;
+					color: #666;
+					line-height: 1.5;
+					position: relative;
+					font-size:14px; 
+					padding-left: 10px;
+					&:after{
+						content: "";
+						width: 2px;
+						height: 2px;
+						background: #666;
+						position: absolute;
+						top: 10px;
+						left: 0;
+						
+					}
+				}
+			}
 		}
 		
 	}
@@ -435,83 +420,32 @@ em,b,i,s{
 		font-size: 18px;
 	}
 	dd{
-		padding: 10px 15px;
+		padding: 10px;
 		font-size: 15px;
 		color: #666;
-	}
-}
-
-
-
-.good-list{
-	margin-top: 15px;
-	position: relative;
-	background: #fff;
-	h2{
-		font-size: 18px;
-		margin: 0;
-		padding: 10px 15px;
-		font-weight: normal;
-		border-bottom: 1px solid #ccc;
-	}
-	.good-content{
-		.dl-list{
-			dl{
-				align-items: flex-start;
-				background: #fff;
-				padding: 10px;
-				border-bottom: 1px solid #ccc;
-				dt{
-					width: 30%;
-					margin-right: 3%;
-				}
-				dd{
-					width: 65%;
-					.dd-heading{
-						margin: 5px 0;
-						/*font-weight: normal;*/
-						font-size: 16px;
-					}
-					.star{
-						margin:8px 0;
-						em{
-							display: inline-block;
-							width: 15px;
-							height: 15px;
-							margin-right:10px; 
-						}
-					}
-					p{
-						margin: 8px 0;
-					}
-					.p-bot{
-						width: 100%;
-						padding: 5px 0;
-						border-top: 1px solid #ccc;
-						
-						/*display: -webkit-box;
-						 -webkit-box-orient: vertical;
-						 -webkit-line-clamp: 1;
-						 overflow: hidden;*/
-						 em{
-						 	display: inline-block;
-						 	width: 20px;
-							height: 20px;
-							border-radius: 50%;
-							margin-right: 15px;
-						 }
-						span{
-							flex: 1;
-							overflow: hidden;
-						text-overflow: ellipsis;
-						white-space: nowrap;
-						}
-					}
-				}
-			}
+		text-align: center;
+		img{
+			display: block;
+			max-width: 100%;
+			
 		}
 	}
 }
+.buy{
+	width: 80%;
+	margin: 15px auto;
+	height: 60px;
+	line-height: 60px;
+	text-align: center;
+	font-size: 18px;
+	
+	background: #D60A16;
+	a{
+		display: block;
+		color: #fff;
+	}
+}
+
 </style>
 <style lang="scss" type="text/css">
 	

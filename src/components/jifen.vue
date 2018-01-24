@@ -12,7 +12,7 @@
  				<em>
  					<img src="../assets/img/jf-t1.png"/>
  				</em>
- 				<ul class="row-lr">
+ 				<ul class="row-lr" v-if="goodList.length>0">
 	 				<li :data-id="item.id" v-for="(item,index) in goodList" @click="menu(index)" :class="{'active':menuIndex==index}" >
 	 					<router-link to="">{{item.title}}</router-link>
 	 				</li>
@@ -188,12 +188,12 @@ export default {
 			Indicator.close();
 			},200)
 	},response=>{
+		Indicator.close();
 	})
 	
   },
-  activated(){
-		  	
-  	
+  deactivated(){
+  	Indicator.close();
   },
   methods:{
   	tip(){
