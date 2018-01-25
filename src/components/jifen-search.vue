@@ -121,9 +121,9 @@ export default {
   methods:{
   	dataInit(val){
   		console.log(val)
-  		this.$http.get('/api/jifenSearch').then(res=>{
-	  		console.log(res.body.data.result)
-	  		this.list=res.body.data.result;
+  		this.$http.get('mock/jifenSearch.json').then(res=>{
+	  		console.log(res.data.result)
+	  		this.list=res.data.result;
 	  	},err=>{
 	  		console.log(err)
 	  	})

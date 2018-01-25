@@ -45,9 +45,9 @@ export default {
   mounted(){
   },
   activated(){
-  	this.$http.get('/api/safedata').then(res=>{
-  		console.log(res.body.data.list);
-		this.list=res.body.data.list;
+  	this.$http.get('mock/safedata.json').then(res=>{
+  		console.log(res.data.list);
+		this.list=res.data.list;
   	},err=>{
   		console.log(err)
   	})

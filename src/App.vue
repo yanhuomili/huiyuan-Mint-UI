@@ -25,6 +25,9 @@ router.beforeEach(function(to, from, next) {
 		}else if(p=="/baiye"){
 			showFooter:true;
 			router.app.$children[0].$refs.foot.showFooter()
+		}else if(p=="/my"){
+			showFooter:true;
+			router.app.$children[0].$refs.foot.showFooter()
 		}else{
 			showFooter:false;
 			router.app.$children[0].$refs.foot.hideFooter()

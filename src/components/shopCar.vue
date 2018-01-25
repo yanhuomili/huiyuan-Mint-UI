@@ -113,10 +113,10 @@ activated(){
 	
 },
   mounted(){
-  		this.$http.get('src/assets/shopcar.json').then(res=>{
+  		this.$http.get('mock/shopcar.json').then(res=>{
 				setTimeout(()=>{
-					console.log(res.body.shopLlist);
-					let data=res.body.shopLlist;
+					console.log(res.shopLlist);
+					let data=res.shopLlist;
 					data.forEach((el)=>{
 						this.$set(el,'checked',false);
 						el.goodsList.forEach((el)=>{

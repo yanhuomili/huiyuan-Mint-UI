@@ -98,9 +98,10 @@ export default {
   mounted(){
   },
   activated(){
-  	this.$http.get('/api/supermarket').then(res=>{
-  		console.log(res.body.data.list)
-  		this.superList=res.body.data.list;
+  	this.$http.get('mock/supermarket.json').then(res=>{
+  		console.log(res.data.list)
+  		
+  		this.superList=res.data.list;
   		
   		this.$nextTick(()=>{//数据渲染之后马上更新dom,才能操作dom元素
 		  	var li=$('.super-classify-menu li');
@@ -115,15 +116,6 @@ export default {
   	},err=>{
   		console.log(err)
   	})
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
   },
   methods:{
   	changeMune(index){
@@ -155,7 +147,7 @@ export default {
   					}
   				}
   				
-  			},20)
+  			},15)
   			
   			
   		}

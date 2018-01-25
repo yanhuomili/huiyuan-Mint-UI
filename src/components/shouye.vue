@@ -1,5 +1,5 @@
 <template>
-  <div class="shouye">
+  <div class="shouye mui-content">
   	<div class="page-top row-lr">
   		<em><img src="../assets/img/kuang.png"/></em>
   		<p class="row-c"><span>广州</span><b><img src="../assets/img/down.png"/></b></p>
@@ -45,10 +45,10 @@
   	</transition>
   	<!--活动专区-->
   	<ul class="row-l imgs">
-  		<li><router-link to="/share"><img src="../assets/img/团购.png"/></router-link></li>
-  		<li><router-link to="/qiangjifen"><img src="../assets/img/抢积分.png"/></router-link></li>
-  		<li><router-link to="/qianggou"><img src="../assets/img/抢购.png"/></router-link></li>
-  		<li><router-link to="/register"><img src="../assets/img/注册有奖.png"/></router-link></li>
+  		<li><router-link to="/share"><img src="../assets/img/tg.png"/></router-link></li>
+  		<li><router-link to="/qiangjifen"><img src="../assets/img/qjf.png"/></router-link></li>
+  		<li><router-link to="/qianggou"><img src="../assets/img/qg.png"/></router-link></li>
+  		<li><router-link to="/register"><img src="../assets/img/zc.png"/></router-link></li>
   	</ul>
   	
   	<!--商品推荐-->
@@ -63,7 +63,7 @@
    					<img src="../assets/img/dbmall_home_img.png"/>
    					<div class="li-body">
    						<h4>
-   							所发生的方式的父级时代峰峻上岛咖啡水电费适得府君书
+   							热门兑换商品正在进行促销大活动
    						</h4>
    						<span class="price">&yen;500</span>
    						<p class="jifen">兑换积分：<strong>500</strong></p>
@@ -81,7 +81,7 @@
    					<img src="../assets/img/dbmall_home_img.png"/>
    					<div class="li-body">
    						<h4>
-   							所发生的方式的父级时代峰峻上岛咖啡水电费适得府君书
+   							商品折扣大甩卖，便宜的你哭
    						</h4>
    						<span class="price">&yen;500</span>
    						<p class="jifen">兑换积分：<strong>500</strong></p>
@@ -145,6 +145,15 @@ export default {
   },
   mounted(){
 //	console.log(mui)
+  },
+  activated(){
+  	console.log(mui)
+  	this.$http.get('mock/jifen.json').then(res=>{
+  		console.log(res)
+  	},err=>{
+  		console.log(err)
+  	})
+  	console.log(123)
   },
   methods:{
   	fn(){
@@ -342,9 +351,9 @@ dl{
 					text-overflow: ellipsis;
 					margin: 0;
 					font-weight: normal;
-					font-weight: 600;
 					color: #333;
 					margin-top: 5px;
+					font-size: 18px;
 				}
 				.price{
 					color: #666;
@@ -380,7 +389,7 @@ dl{
 				margin: 0;
 				font-weight:normal;
 				.shop{
-					font-size: 20px;
+					font-size: 18px;
 				}
 				i{
 					font-style: normal;

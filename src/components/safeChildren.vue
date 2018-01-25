@@ -79,8 +79,9 @@ export default {
 	}
 }
 .mui-media-object{
-	max-width: 80px;
-	height: 80px;
+	max-width: 80px !important;
+	width: 80px !important;
+	height: 80px !important;
 }
 .mui-table-view-cell{
 	&:after{

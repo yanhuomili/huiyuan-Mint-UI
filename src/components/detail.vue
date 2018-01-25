@@ -324,9 +324,9 @@ export default {
          // 因为当钩子执行前，组件实例还没被创建
        	//把当前的组件传递进去，跳到目标页面之后就可以获取目标页面的实例。
         next(detail=>{
-        	detail.$http.get('/api/jifenDetail').then(res=>{
-						console.log(res.body.data.good);
-						detail.good=res.body.data.good;
+        	detail.$http.get('mock/detail.json').then(res=>{
+						console.log(res.data.good);
+						detail.good=res.data.good;
 						if(typeof to.params.id!='undefined'){//判断是从列表页进来，还是从购物车返回
 							detail.good.shopName=detail.good.shopName+to.params.id;
 						}

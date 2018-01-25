@@ -1,5 +1,5 @@
 <template>
-  <div class="baiye modal-show">
+  <div class="baiye modal-show mui-content">
   	<!--<header class="mui-bar mui-bar-nav">
   	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
   	    <h1 class="mui-title">百业联盟</h1>
@@ -117,7 +117,6 @@ export default {
       mask:null,
       allData:[],
       fixedMenu:-1,
-//    scrollFn:null,
       classifyList:[
       	{src:'../src/assets/img/icon_baiye_meishi.png',texts:'美食美食',id:1},
       	{src:'../src/assets/img/icon_baiye_shenghuochaoshi.png',texts:'生活超市',id:2},
@@ -132,36 +131,21 @@ export default {
       ]
     }
   },
-  mounted(){
+  activated(){
 //	遮罩层
-//		this.mask = mui.createMask(()=>{
-//			this.itemShow='-1';
-//			$('body').css({'height':'100%','overflow':'auto'})
-//		})
+		this.mask = mui.createMask(()=>{
+			this.itemShow='-1';
+			$('body').css({'height':'100%','overflow':'auto'})
+		})
 		//获取数据
-		this.$http.get('src/assets/baiye.json').then(response => {
+		this.$http.get('mock/baiye.json').then(response => {
         var all=response.data.all;
         this.allData=all;
+        console.log('baiye')
     }, response => {
         console.log("error");
     });
     window.addEventListener('scroll',this.scrollFn);
-    
-//		var _this=this;
-//		
-//		this.scrollFn=$(window).scroll(function(){
-//			var t=$('.baiye-content .good-list')[0].getBoundingClientRect().top;
-//			console.log(t);
-//			if(t<=45){
-//     		_this.fixedMenu=1;
-//			}else{
-//	       		_this.fixedMenu=-1;
-//				
-//			}
-//			console.log(this.fixedMenu)
-//		})
-//		
-//		console.log(this.scrollFn);
   },
   deactivated(){
   	console.log(132)
@@ -181,12 +165,12 @@ export default {
   		var newIndex=index;
   		if(oddIndex==newIndex){
   			this.itemShow=-1;
-//			this.mask.close();
+			this.mask.close();
   			$('body').css({'height':'100%','overflow':'auto'})
   			return;
   		}
 			this.itemShow=index;
-//			this.mask.show()
+			this.mask.show()
 			$('body').css({'height':'100%','overflow':'hidden'})
   		var target=ev.target
   		var parent=$(target).parents('ul').next();
@@ -199,7 +183,7 @@ export default {
   	selected(i){
   		this.selectIndex=i;
   		this.itemShow=-1;
-//		this.mask.close();
+		this.mask.close();
   		$('body').css({'height':'100%','overflow':'auto'})
   	},
   	toast(index,ev){
@@ -212,7 +196,7 @@ export default {
   	}
   },
   beforeDestroy(){
-  	window.removeEventListener('scroll',this.scrollFn)
+  	window.removeEventListener('scroll',this.scrollFn);
   }
   
 }

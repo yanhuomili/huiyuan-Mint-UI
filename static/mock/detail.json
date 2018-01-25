@@ -1,0 +1,41 @@
+{
+	"good":{
+		"bannerList":[
+			"http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/750/h/750",
+			"http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/750/h/750",
+			"http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/750/h/750",
+			"http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/750/h/750"
+		],
+		"shopName":"时尚精品旗舰店",
+		"goodTitle":"2017年新品专柜清新镂空蕾丝裙子2017年新品专柜清新镂空蕾丝裙子",
+		"goodPrice":150,
+		"goodScore":80,
+		"goodDeliver":"包邮",
+		"goodSellNum":22,
+		"goodAddress":"广州",
+		"shopId":101,
+		"commentNum":55,
+		"commentName":"郭美美",
+		"commentTime":"2017-10-12",
+		"commentText":"颜色分类：灰色；尺码：L",
+		"tuwenList":[	
+			"http://fuss10.elemecdn.com/c/6b/29e3d29b0db63d36f7c500bca31d8jpeg.jpeg?imageView2/1/w/750/h/750",
+			"http://fuss10.elemecdn.com/f/28/a51e7b18751bcdf871648a23fd3b4jpeg.jpeg?imageView2/1/w/750/h/750",
+			"http://fuss10.elemecdn.com/d/b9/bcab0e8ad97758e65ae5a62b2664ejpeg.jpeg?imageView2/1/w/750/h/750",
+			"http://fuss10.elemecdn.com/c/6b/29e3d29b0db63d36f7c500bca31d8jpeg.jpeg?imageView2/1/w/750/h/750",
+			"http://fuss10.elemecdn.com/f/28/a51e7b18751bcdf871648a23fd3b4jpeg.jpeg?imageView2/1/w/750/h/750",
+			"http://fuss10.elemecdn.com/d/b9/bcab0e8ad97758e65ae5a62b2664ejpeg.jpeg?imageView2/1/w/750/h/750",
+			"http://fuss10.elemecdn.com/c/6b/29e3d29b0db63d36f7c500bca31d8jpeg.jpeg?imageView2/1/w/750/h/750",
+			"http://fuss10.elemecdn.com/f/28/a51e7b18751bcdf871648a23fd3b4jpeg.jpeg?imageView2/1/w/750/h/750",
+			"http://fuss10.elemecdn.com/d/b9/bcab0e8ad97758e65ae5a62b2664ejpeg.jpeg?imageView2/1/w/750/h/750","http://fuss10.elemecdn.com/c/6b/29e3d29b0db63d36f7c500bca31d8jpeg.jpeg?imageView2/1/w/750/h/750",
+			"http://fuss10.elemecdn.com/f/28/a51e7b18751bcdf871648a23fd3b4jpeg.jpeg?imageView2/1/w/750/h/750",
+			"http://fuss10.elemecdn.com/d/b9/bcab0e8ad97758e65ae5a62b2664ejpeg.jpeg?imageView2/1/w/750/h/750"
+		],
+		"goodStock":66,
+		"attrSelect":[
+	      	{"title":"颜色分类","options":[{"isSelect":1,"text":"黑色"},{"isSelect":0,"text":"白色"},{"isSelect":0,"text":"天蓝色"},{"isSelect":0,"text":"绿色"}]},
+	      	{"title":"尺码","options":[{"isSelect":1,"text":"S"},{"isSelect":0,"text":"M"},{"isSelect":0,"text":"L"},{"isSelect":0,"text":"XL"}]}
+	      ]
+	
+	}
+}

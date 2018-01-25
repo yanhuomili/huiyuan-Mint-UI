@@ -21,6 +21,7 @@ import qiangjifen from '@/components/qiangjifen'
 import baiyeShop from '@/components/baiyeShop'
 import baiyeShopDetail from '@/components/baiyeShopDetail'
 import baiyeOrder from '@/components/baiyeOrder'
+import my from '@/components/my'
 
 //import jfDuihuan from '@/components/jfDuihuan'
 //import xianjinDuihuan from '@/components/xianjinDuihuan'
@@ -127,7 +128,11 @@ export default new Router({
     	path:'/baiyeOrder',
     	name:'baiyeOrder',
     	component:baiyeOrder
+    },
+    {
+    	path:'/my',
+    	name:'my',
+    	component:my
     }
-    
   ]
 })

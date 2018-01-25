@@ -30,7 +30,7 @@
 		    	<i><img src="../assets/img/icon_baiyelianmeng_default.png"/></i>
 		    	<span>百业联盟</span>
 		    </router-link>
-		    <router-link to="/" class="col-c">
+		    <router-link to="/my" class="col-c">
 		    	<i><img src="../assets/img/icon_wode_default.png"/></i>
 		    	<span>我的</span>
 		    </router-link>

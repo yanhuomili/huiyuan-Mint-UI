@@ -140,9 +140,9 @@ export default {
 		  	
   	}
   	
-  	this.$http.get('/api/dbmall').then(res=>{
-  		console.log(res.body.data.list);
-			this.dbList=res.body.data.list;
+  	this.$http.get('mock/dbmall.json').then(res=>{
+  		console.log(res.data.list);
+			this.dbList=res.data.list;
 			this.$nextTick(()=>{
   			var menuLi=$('.menu-wrap ul li');
 		  	var len=menuLi.length;
@@ -151,8 +151,6 @@ export default {
 		  	var ulw=len*w;
 		  	console.log(len,w,ulw)
 		  	$('.menu-wrap ul').width(ulw);
-
-		  	
   		})
 			
 			
@@ -195,7 +193,7 @@ export default {
  					}
  					
  					
- 				},20)
+ 				},15)
   			
   		}
   	},
