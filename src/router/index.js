@@ -22,6 +22,16 @@ import baiyeShop from '@/components/baiyeShop'
 import baiyeShopDetail from '@/components/baiyeShopDetail'
 import baiyeOrder from '@/components/baiyeOrder'
 import my from '@/components/my'
+import setting from '@/components/setting'
+import myInfo from '@/components/my-info'
+import myWallet from '@/components/my-wallet'
+import myJifen from '@/components/my-jifen'
+import myDeal from '@/components/my-deal'
+import tixian from '@/components/tixian'
+import tixianDetail from '@/components/tixian-detail'
+import myBankcard from '@/components/my-bankcard'
+import myJifenDetail from '@/components/my-jifen-detail'
+import myCollect from '@/components/my-collect'
 
 //import jfDuihuan from '@/components/jfDuihuan'
 //import xianjinDuihuan from '@/components/xianjinDuihuan'
@@ -133,6 +143,56 @@ export default new Router({
     	path:'/my',
     	name:'my',
     	component:my
-    }
+    },
+    {
+    	path:'/setting',
+    	name:'setting',
+    	component:setting
+    },
+    {
+    	path:'/myInfo',
+    	name:'myInfo',
+    	component:myInfo
+    },
+    {
+    	path:'/myWallet',
+    	name:'myWallet',
+    	component:myWallet
+    },
+    {
+    	path:'/myJifen',
+    	name:'myJifen',
+    	component:myJifen
+    },
+    {
+    	path:'/myDeal',
+    	name:'myDeal',
+    	component:myDeal
+    },
+    {
+    	path:'/tixian',
+    	name:'tixian',
+    	component:tixian
+    },
+    {
+    	path:'/tixianDetail',
+    	name:'tixianDetail',
+    	component:tixianDetail
+    },
+    {
+    	path:'/myBankcard',
+    	name:'myBankcard',
+    	component:myBankcard
+    },
+    {
+    	path:'/myJifenDetail',
+    	name:'myJifenDetail',
+    	component:myJifenDetail
+    },
+    {
+    	path:'/myCollect',
+    	name:'myCollect',
+    	component:myCollect
+    },
   ]
 })

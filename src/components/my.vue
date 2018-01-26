@@ -1,23 +1,27 @@
 <template>
   <div class="my">
   	<header class="mui-bar mui-bar-nav">
-  	    <a class=" mui-pull-left">
+  	    <router-link to="/setting" class=" mui-pull-left">
   	    	<img src="../assets/img/set.png"/>
-  	    </a>
-  	    <a class=" mui-pull-right">
+  	    </router-link>
+  	    <router-link to="" class=" mui-pull-right">
   	    	<img src="../assets/img/my-news.png"/>
-  	    </a>
+  	    </router-link>
   	    <h1 class="mui-title">我的</h1>
   	</header>
  		<div class="mui-content">
-			<div class="my-head row-l">
-				<img src="../assets/img/my-head.png" alt="" />
-				<span class="user-name">请点击登录</span>
-			</div>
+ 			<router-link to="myInfo">
+				<div class="my-head row-l">
+					<img src="../assets/img/my-head.png" alt="" />
+					<span class="user-name">请点击登录</span>
+				</div>
+			</router-link>
 			<dl class="same-dl score">
-				<dt class="row-lr">
-					<p>我的积分</p>
-				</dt>
+				<router-link to="/myJifen">
+					<dt class="row-lr">
+						<p>我的积分</p>
+					</dt>
+				</router-link>
 				<dd class="row-lr">
 					<p class="col-c">
 						<span>5000</span>
@@ -25,7 +29,7 @@
 					</p>
 					<p class="col-c">
 						<span>5000</span>
-						<i>折扣积分</i>
+						<i>兑换积分</i>
 					</p>
 				</dd>
 			</dl>
@@ -105,31 +109,38 @@
 			</dl>
 			
 			<dl class="same-dl guide-list">
-				<dt class="row-lr">
-					<p class="row-l">
-						<img src="../assets/img/gwc.png"/>
-						<span>购物车</span>
-					</p>
-				</dt>
-				<dt class="row-lr">
-					<p class="row-l">
-						<img src="../assets/img/qb.png"/>
-						<span>购物车</span>
-					</p>
-				</dt>
-				<dt class="row-lr">
-					<p class="row-l">
-						<img src="../assets/img/fx.png"/>
-						<span>购物车</span>
-					</p>
-				</dt>
-				<dt class="row-lr">
-					<p class="row-l">
-						<img src="../assets/img/sc.png"/>
-						<span>购物车</span>
-					</p>
-				</dt>
-				
+				<router-link to="/shopCar">
+					<dt class="row-lr">
+							<p class="row-l">
+								<img src="../assets/img/gwc.png"/>
+								<span>购物车</span>
+							</p>
+					</dt>
+				</router-link>
+				<router-link to="/myWallet">
+					<dt class="row-lr">
+						<p class="row-l">
+							<img src="../assets/img/qb.png"/>
+							<span>我的钱包</span>
+						</p>
+					</dt>
+				</router-link>
+				<router-link to="/share">
+					<dt class="row-lr">
+						<p class="row-l">
+							<img src="../assets/img/fx.png"/>
+							<span>分享赚积分</span>
+						</p>
+					</dt>
+				</router-link>
+				<router-link to="/myCollect">
+					<dt class="row-lr">
+						<p class="row-l">
+							<img src="../assets/img/sc.png"/>
+							<span>我的收藏</span>
+						</p>
+					</dt>
+				</router-link>
 			</dl>
 			
 			
@@ -287,6 +298,7 @@ export default {
 .guide-list{
 	dt{
 		p{
+			font-size: 16px;
 			img{
 				width: 25px;
 				height: 25px;

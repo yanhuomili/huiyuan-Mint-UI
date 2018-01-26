@@ -6,11 +6,17 @@ import App from './App'
 import router from './router'
 import jquery from 'jquery'
 import Mint from 'mint-ui'
+import fastClick from 'fastclick'
+fastClick.attach(document.body)
+
+
 import VueResource from 'vue-resource'
 import 'mint-ui/lib/style.min.css'
 import '@/assets/css/mui.css'
 import '@/assets/css/reset.css'
 import '@/assets/fonts/mui.ttf'
+
+
 
 Vue.use(Mint)
 Vue.use(VueResource)
