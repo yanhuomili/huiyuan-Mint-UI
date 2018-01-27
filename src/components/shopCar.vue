@@ -108,25 +108,7 @@ activated(){
 	
 },
   mounted(){
-//		this.$http.get('mock/shopcar.json').then(res=>{
-//				setTimeout(()=>{
-//					console.log(res.shopLlist);
-//					let data=res.shopLlist;
-//					console.log(data)
-//					data.forEach((el)=>{
-//						this.$set(el,'checked',false);
-//						el.goodsList.forEach((el)=>{
-//							this.$set(el,'checked',false);
-//						})
-//					})
-//					this.list=res.body.shopLlist
-////					this.list=[1,2];
-////					this.len=true;
-//				},10)
-//					
-//			},res=>{
-//				console.log(res)
-//			})
+  		console.log('修改了购物车页面的信息');
   },
   computed:{
   	numbers(){

@@ -151,6 +151,9 @@ export default {
   	console.log(132)
   	window.removeEventListener('scroll',this.scrollFn)
   },
+  mounted(){
+  	console.log('百业联盟页面添加注释')
+  },
   methods:{
   	scrollFn(){
   		var t=$('.baiye-content .good-list')[0].getBoundingClientRect().top;
