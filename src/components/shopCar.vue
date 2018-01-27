@@ -109,6 +109,10 @@ activated(){
 },
   mounted(){
   		console.log('修改了购物车页面的信息');
+  		console.log('我又添加了代码');
+  		console.log('我又添加了代码');
+  		console.log('我又添加了代码');
+  		console.log('我又添加了代码');
   },
   computed:{
   	numbers(){
