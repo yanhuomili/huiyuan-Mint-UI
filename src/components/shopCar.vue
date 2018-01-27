@@ -119,9 +119,6 @@ activated(){
 		},
   	...mapState({
 			goodListFormStore:'carGoodList',//this.	goodListFormStore==this.$store.state.goodListFormStore
-			dd:'dd',//字符串形式
-			ee:'ee',//字符串形式
-			ff:'ff'//字符串形式
 			
 		  }),
 		...mapGetters({

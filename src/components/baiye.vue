@@ -133,10 +133,16 @@ export default {
   },
   activated(){
 //	遮罩层
-//		this.mask = mui.createMask(()=>{
-//			this.itemShow='-1';
-//			$('body').css({'height':'100%','overflow':'auto'})
-//		})
+		this.mask = mui.createMask(()=>{
+			this.itemShow='-1';
+			$('body').css({'height':'100%','overflow':'auto'})
+		})
+		console.log('在没有pull的情况下又写了许多代码');
+		console.log('在没有pull的情况下又写了许多代码');
+		console.log('在没有pull的情况下又写了许多代码');
+		console.log('在没有pull的情况下又写了许多代码');
+		console.log('在没有pull的情况下又写了许多代码');
+		console.log('在没有pull的情况下又写了许多代码');
 		//获取数据
 		this.$http.get('mock/baiye.json').then(response => {
         var all=response.data.all;
