@@ -188,11 +188,7 @@ export default {
 			Indicator.close();
 			},200)
 	},response=>{
-<<<<<<< Updated upstream
 		Indicator.close();
-=======
-			Indicator.close();
->>>>>>> Stashed changes
 	})
 	
   },

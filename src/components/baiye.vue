@@ -165,11 +165,8 @@ export default {
   		var newIndex=index;
   		if(oddIndex==newIndex){
   			this.itemShow=-1;
-<<<<<<< Updated upstream
 			this.mask.close();
-=======
 //			this.mask.close();
->>>>>>> Stashed changes
   			$('body').css({'height':'100%','overflow':'auto'})
   			return;
   		}
@@ -187,11 +184,8 @@ export default {
   	selected(i){
   		this.selectIndex=i;
   		this.itemShow=-1;
-<<<<<<< Updated upstream
 		this.mask.close();
-=======
 //		this.mask.close();
->>>>>>> Stashed changes
   		$('body').css({'height':'100%','overflow':'auto'})
   	},
   	toast(index,ev){
