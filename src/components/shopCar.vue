@@ -113,6 +113,7 @@ activated(){
   		console.log('我又添加了代码');
   		console.log('我又添加了代码');
   		console.log('我又添加了代码');
+  		console.log('我又添加了代码');
   },
   computed:{
   	numbers(){
