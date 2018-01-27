@@ -93,7 +93,6 @@ export default {
 			console.log()
   },
 activated(){
-	
 	let data=this.$store.state.carGoodList;
 	data.forEach((el)=>{
 			this.$set(el,'checked',false);
@@ -102,35 +101,32 @@ activated(){
 				})
 		})
 	this.fromstorelist=data;
-	console.log(this.fromstorelist)
-	
-	console.log(this.$store)
 	console.log('activated')
-	
 	$('#carBox').get(0).addEventListener('scroll',this.scrollFn)
 	
   
 	
 },
   mounted(){
-  		this.$http.get('mock/shopcar.json').then(res=>{
-				setTimeout(()=>{
-					console.log(res.shopLlist);
-					let data=res.shopLlist;
-					data.forEach((el)=>{
-						this.$set(el,'checked',false);
-						el.goodsList.forEach((el)=>{
-							this.$set(el,'checked',false);
-						})
-					})
-					this.list=res.body.shopLlist
-//					this.list=[1,2];
-//					this.len=true;
-				},10)
-					
-			},res=>{
-				console.log(res)
-			})
+//		this.$http.get('mock/shopcar.json').then(res=>{
+//				setTimeout(()=>{
+//					console.log(res.shopLlist);
+//					let data=res.shopLlist;
+//					console.log(data)
+//					data.forEach((el)=>{
+//						this.$set(el,'checked',false);
+//						el.goodsList.forEach((el)=>{
+//							this.$set(el,'checked',false);
+//						})
+//					})
+//					this.list=res.body.shopLlist
+////					this.list=[1,2];
+////					this.len=true;
+//				},10)
+//					
+//			},res=>{
+//				console.log(res)
+//			})
   },
   computed:{
   	numbers(){
