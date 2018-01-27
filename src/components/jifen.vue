@@ -7,7 +7,7 @@
 		  <h4>正在加载数据...</h4>
 		  
 		</mt-popup>-->
- 		<div class="mui-content">
+ 		<div class="mui-content" v-if="goodList.length>0">
  			<div class="page-head row-lr">
  				<em>
  					<img src="../assets/img/jf-t1.png"/>
@@ -188,12 +188,20 @@ export default {
 			Indicator.close();
 			},200)
 	},response=>{
+<<<<<<< Updated upstream
 		Indicator.close();
+=======
+			Indicator.close();
+>>>>>>> Stashed changes
 	})
 	
   },
   deactivated(){
   	Indicator.close();
+  },
+  deactivated(){
+  	console.log('deactivated')
+		Indicator.close();
   },
   methods:{
   	tip(){

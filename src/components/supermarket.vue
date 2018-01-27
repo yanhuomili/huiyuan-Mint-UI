@@ -133,7 +133,7 @@ export default {
   			var oldScroll=wrap.scrollLeft();
   			console.log(oldScroll,pxW)
   			var timer=setInterval(()=>{
-  				if(oldScroll<=pxW){
+  				if(oldScroll<pxW){
   					oldScroll+=5;
   					wrap.scrollLeft(oldScroll);
   					if(oldScroll>=pxW){

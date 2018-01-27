@@ -178,13 +178,13 @@ export default {
  				var old=$('.menu-wrap').scrollLeft()
  				var timer=setInterval(()=>{
 
- 					if(old<=pxW){
+ 					if(old<pxW){
  						old+=5;
  						$('.menu-wrap').scrollLeft(old);
  						if(old>=pxW){
  							clearInterval(timer)
 						}
- 					}else{
+ 					}else if(old>pxW){
  						old-=5;
  						$('.menu-wrap').scrollLeft(old);
  						if(old<=pxW){
