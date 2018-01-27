@@ -132,7 +132,7 @@ export default {
     }
   },
   activated(){
-//	遮罩层
+//	遮罩层显示出来
 		this.mask = mui.createMask(()=>{
 			this.itemShow='-1';
 			$('body').css({'height':'100%','overflow':'auto'})
@@ -143,6 +143,7 @@ export default {
 		console.log('在没有pull的情况下又写了许多代码');
 		console.log('在没有pull的情况下又写了许多代码');
 		console.log('在没有pull的情况下又写了许多代码');
+		console.log('遮罩层显示出来')
 		//获取数据
 		this.$http.get('mock/baiye.json').then(response => {
         var all=response.data.all;
@@ -175,12 +176,12 @@ export default {
   		if(oddIndex==newIndex){
   			this.itemShow=-1;
 			this.mask.close();
-//			this.mask.close();
+			this.mask.close();
   			$('body').css({'height':'100%','overflow':'auto'})
   			return;
   		}
 			this.itemShow=index;
-//			this.mask.show()
+			this.mask.show()
 			$('body').css({'height':'100%','overflow':'hidden'})
   		var target=ev.target
   		var parent=$(target).parents('ul').next();
@@ -193,8 +194,7 @@ export default {
   	selected(i){
   		this.selectIndex=i;
   		this.itemShow=-1;
-		this.mask.close();
-//		this.mask.close();
+			this.mask.close();
   		$('body').css({'height':'100%','overflow':'auto'})
   	},
   	toast(index,ev){
