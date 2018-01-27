@@ -154,8 +154,8 @@ export default {
   mounted(){
   	console.log('百业联盟页面添加注释')
   	console.log('1');
-  	console.log('2');
-  	console.log('3');
+  	
+  	
   },
   methods:{
   	scrollFn(){
