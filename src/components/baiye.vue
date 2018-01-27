@@ -137,7 +137,8 @@ export default {
 			this.itemShow='-1';
 			$('body').css({'height':'100%','overflow':'auto'})
 		})
-		console.log('遮罩层显示出来')
+		console.log('遮罩层显示出来');
+		console.log('我又想隐藏遮罩层');
 		//获取数据
 		this.$http.get('mock/baiye.json').then(response => {
         var all=response.data.all;
