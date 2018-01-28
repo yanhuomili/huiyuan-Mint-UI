@@ -3,7 +3,12 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <meta name="screen-orientation" content="portrait"/><!--uc强制竖屏-->
+    <!--清除页面缓存-->
+    <meta http-equiv="pragram" content="no-cache">  
+		<meta http-equiv="cache-control" content="no-cache, must-revalidate"> 
+		<meta http-equiv="expires" content="0"> 
+		
+		<meta name="screen-orientation" content="portrait"/><!--uc强制竖屏-->
     <meta name="x5-fullscreen" content="true"><!--qq强制全屏-->
     <meta name="apple-mobile-web-app-capable" content="yes"><!--删除苹果默认工具栏和菜单栏-->
     <meta name="format-detection" content="telephone=no"><!--忽略页面中的数据识别为电话号码-->
@@ -15,9 +20,20 @@
   </head>
   <body>
     <div id="app">
-    	<!--<app :showFooter="showFooter"></app>-->
+    	<app></app>
     </div>
 
     <!-- built files will be auto injected -->
   </body>
+  
+  <script type="text/javascript">
+  	/*
+  	 * 
+  	 * <meta name="screen-orientation" content="portrait"/><!--uc强制竖屏-->
+    <meta name="x5-fullscreen" content="true"><!--qq强制全屏-->
+    <meta name="apple-mobile-web-app-capable" content="yes"><!--删除苹果默认工具栏和菜单栏-->
+    <meta name="format-detection" content="telephone=no"><!--忽略页面中的数据识别为电话号码-->
+    <meta name="full-screen" content="yes"><!--uc强制全屏-->
+  	 */
+  </script>
 </html>

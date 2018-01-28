@@ -95,14 +95,13 @@ export default {
       ]
     }
   },
+//activated(){
+//},
   mounted(){
-  },
-  activated(){
+  	console.log('activated')
   	this.$http.get('mock/supermarket.json').then(res=>{
   		console.log(res.data.list)
-  		
   		this.superList=res.data.list;
-  		
   		this.$nextTick(()=>{//数据渲染之后马上更新dom,才能操作dom元素
 		  	var li=$('.super-classify-menu li');
 		  	var liW=li.get(0).offsetWidth;
@@ -110,9 +109,6 @@ export default {
 		  	var ul=$('.super-classify-menu ul');
 		  	ul.width(len*liW);
   		})
-  		
-  		
-  		
   	},err=>{
   		console.log(err)
   	})
@@ -223,8 +219,10 @@ export default {
 		background: #fff;
 		margin-top: 10px;
 		ul{
+			height: 50px;
 			overflow: hidden;
-			margin-top: 9px;
+			padding: 9px 0;
+			/*margin-top: 9px;*/
 			li{
 				padding: 5px 15px;
 				float: left;

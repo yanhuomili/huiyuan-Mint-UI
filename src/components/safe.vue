@@ -24,11 +24,12 @@
  				</div>
  			</div>
  		</div>
+ 		
   </div>
 </template>
 
 <script>
-import {Toast} from 'mint-ui'
+import {Toast,Indicator} from 'mint-ui'
 import safeChildren from './safeChildren'
 export default {
   name: 'safe',
@@ -44,7 +45,8 @@ export default {
   },
   mounted(){
   },
-  activated(){
+  mounted(){
+  	console.log('activated')
   	this.$http.get('mock/safedata.json').then(res=>{
   		console.log(res.data.list);
 		this.list=res.data.list;
@@ -58,7 +60,7 @@ export default {
   		console.log(this.menuIndex)
   	},
   	updateSafe(){
-  		console.log(this.menuIndex)
+  		console.log(this.menuIndex);
 			var obj=this.list[this.menuIndex].safeList[0];		
 			for(var i=0;i<5;i++){
 				this.list[this.menuIndex].safeList.push(obj)

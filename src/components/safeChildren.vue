@@ -3,7 +3,7 @@
   	<ul class="mui-table-view"
   		v-infinite-scroll="loadm"
      infinite-scroll-disabled="loading"
-     infinite-scroll-distance="10"
+     infinite-scroll-distance="15"
      infinite-scroll-immediate-check="false"
   		>
   	    <li class="mui-table-view-cell mui-media" v-for="item in safeObj.safeList">
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import {Toast,InfiniteScroll} from 'mint-ui'
+import {Toast,InfiniteScroll,Indicator} from 'mint-ui'
 export default {
   name: 'safeChildren',
   data () {
@@ -40,13 +40,16 @@ export default {
   },
   mounted(){
   },
+  deactivated(){
+  	Indicator.close();
+  },
   methods:{
   	loadm(){
   		this.loading=true;
-  		this.$emit('loadmoreInfo')
+  		Indicator.open('加载中...')
   		setTimeout(()=>{
   			console.log(55);
-			
+  			this.$emit('loadmoreInfo')
 //				this.loading=false;
   		},1000)
 		
@@ -59,6 +62,7 @@ export default {
   		handler(){
   			console.log('handler')
   			this.loading=false;
+  			Indicator.close();
   		},
   		deep:true
   	}
@@ -71,7 +75,7 @@ export default {
 <style scoped lang="scss">
 .safeChildren{
 	height: 100%;
-	overflow-y: auto;
+	overflow-y: scroll;
 }
 .mui-table-view{
 	&:before{

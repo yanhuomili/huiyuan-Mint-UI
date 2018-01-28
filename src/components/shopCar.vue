@@ -92,29 +92,21 @@ export default {
   created(){
 			console.log()
   },
-activated(){
-	let data=this.$store.state.carGoodList;
-	data.forEach((el)=>{
-			this.$set(el,'checked',false);
-				el.list.forEach((el)=>{
-					this.$set(el,'checked',false);
-				})
-		})
-	this.fromstorelist=data;
-	console.log('activated')
-	$('#carBox').get(0).addEventListener('scroll',this.scrollFn)
-	
-  
-	
-},
-  mounted(){
-  		console.log('修改了购物车页面的信息');
-  		console.log('我又添加了代码');
-  		console.log('我又添加了代码');
-  		console.log('我又添加了代码');
-  		console.log('我又添加了代码');
-  		console.log('我又添加了代码');
-  },
+	mounted(){
+		let data=this.$store.state.carGoodList;
+		data.forEach((el)=>{
+				this.$set(el,'checked',false);
+					el.list.forEach((el)=>{
+						this.$set(el,'checked',false);
+					})
+			})
+		this.fromstorelist=data;
+		console.log('activated')
+		$('#carBox').get(0).addEventListener('scroll',this.scrollFn)
+		
+	  
+		
+	},
   computed:{
   	numbers(){
   		return 999

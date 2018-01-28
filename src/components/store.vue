@@ -84,6 +84,9 @@ export default {
 			$(el).css({'left':n+'px'})
   	})
   },
+  deactivated(){
+  	Indicator.close();
+  },
   methods:{
   	changeMenu(index){
   		this.menuIndex=index;

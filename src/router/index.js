@@ -46,7 +46,10 @@ export default new Router({
     {
       path: '/DBmall',
       component: DBmall,
-      name:'DBmall'
+      name:'DBmall',
+      meta:{
+      	keepAlive:true
+      }
     },
 		{
       path: '/HelloWorld',
@@ -54,11 +57,17 @@ export default new Router({
     },
     {
       path: '/baiye',
-      component: baiye
+      component: baiye,
+      meta:{
+      	keepAlive:true
+      }
     },
     {
       path: '/jifen',
-      component: jifen
+      component: jifen,
+      meta:{
+      	keepAlive:true
+      }
     },
     {
       path: '/detail',
@@ -92,17 +101,26 @@ export default new Router({
     {
     	path:'/jifenSearch',
     	name:'jifenSearch',
-    	component:jifenSearch
+    	component:jifenSearch,
+    	meta:{
+    		keepAlive:true
+    	}
     },
     {
     	path:'/supermarket',
     	name:'supermarket',
-    	component:superMarket
+    	component:superMarket,
+    	meta:{
+    		keepAlive:true
+    	}
     },
     {
     	path:'/safe',
     	name:'safe',
-    	component:safe
+    	component:safe,
+    	meta:{
+    		keepAlive:true
+    	}
     },
     {
     	path:'/share',

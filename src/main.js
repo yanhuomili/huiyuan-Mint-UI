@@ -6,8 +6,8 @@ import App from './App'
 import router from './router'
 import jquery from 'jquery'
 import Mint from 'mint-ui'
-import fastClick from 'fastclick'
-fastClick.attach(document.body)
+//import fastClick from 'fastclick'
+//fastClick.attach(document.body)
 
 
 import VueResource from 'vue-resource'

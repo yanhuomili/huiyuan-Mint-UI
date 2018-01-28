@@ -49,6 +49,7 @@
 		 		  </dl>
 		 		  
 		 		  <div class="single-model-wrap">
+		 		  	<div class="fix-bot">999</div>
 		 		  	<mt-loadmore topLoadingText="刷新页面"
 		 		  		bottomLoadingText="正在加载数据..."
 		 		  		:top-method="top"
@@ -69,11 +70,11 @@
 	 		  	    
 		 		  	</mt-loadmore>
 		 		  	
+		 		  	
 		 		  </div>
  		   	</div>
  		   </div>
  				
-		  	
 			
 			</div>
   </div>
@@ -113,10 +114,6 @@ export default {
 		 	
       
     }
-  },
-  mounted(){
-  	console.log(this.list.length)
-//	this.dataInit(2);
   },
   methods:{
   	dataInit(val){
@@ -232,7 +229,8 @@ export default {
 	width: 100%;
 	background: #fff;
 	li{
-		padding: 10px 20px;
+		width: 33%;
+		padding: 10px 0;
 		text-align: center;
 		border-bottom: 1px solid transparent;
 		&.active{
@@ -241,7 +239,10 @@ export default {
 	}
 }
 .search-good-list{
+	width: 100%;
+	height: calc(100vh - 86px);
 	.search-good-item{
+		height: 100%;
 		display: none;
 		&.active{
 			display: block;
@@ -250,6 +251,7 @@ export default {
 	
 }
 .search-tiem-nav{
+	width: 100%;
 	dt{
 		width: 100%;
 		position: relative;
@@ -340,8 +342,7 @@ export default {
 .single-model-wrap{
 	width: 100%;
 	height: calc(100vh - 130px);
-	overflow: auto;
-	
+	overflow-y: scroll;
 		.jifen-list{
 		background: #fff;
 		flex-wrap: wrap;

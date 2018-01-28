@@ -77,35 +77,8 @@ export default {
 			 		"shopId":49,
 			 		"shopName":"小米手机旗舰店9"
 			 	}
-		this.$emit('jifenLoadMore',obj);
+			this.$emit('jifenLoadMore',obj);
 			this.$emit('dbLoadMore',obj);
-  		
-  		setTimeout(()=>{
-//			var arr=this.pIndex.goodsList;
-//	  		for(var i=0;i<4;i++){
-//	  			arr.push({ 
-//				 		"goodsImg":"http://fuss10.elemecdn.com/6/ad/779f8620ff49f701cd4c58f6448b6jpeg.jpeg?imageView2/1/w/180/h/180",
-//				 		"goodPrice":91+i,
-//				 		"goodScore":140+i,
-//				 		"goodId":210+i,
-//				 		"shopId":43+i,
-//				 		"shopName":"小米手机旗舰店"+i
-//				 	})
-//	  		}
-//			this.$refs.loadmore.onBottomLoaded();
-  			
-  			
-  			this.stopIndex=this.stopIndex+1;
-				if(this.stopIndex==4){
-					this.stopNum=true;
-					Toast({
-						message:'没有更多了...',
-						duration:2000
-					})
-					
-				}
-  			
-  		},200)
   	},
   	goDetail(id,shopName){//跳到详情页面
   		console.log(id,shopName)
@@ -152,10 +125,13 @@ export default {
 
 
 .jifenduihuan{
-	/*width: 100%;*/
+	height: 100%;
+	overflow: hidden;
 }
 .jifen-list-box{
 	width: 100%;
+	height: 100%;
+	overflow-y:scroll;
 	/*margin: 15px 0;*/
 	.jifen-list{
 		background: #fff;
@@ -192,7 +168,9 @@ export default {
 		}
 	}
 }
-
+#loadmore{
+	overflow: hidden;
+}
 
 </style>
 <style type="text/css" lang="scss">

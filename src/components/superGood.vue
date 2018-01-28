@@ -31,7 +31,7 @@ export default {
   mounted(){
   },
   activated(){
-  	console.log(this.superGood)
+//	console.log(this.superGood)
   },
   methods:{
   },

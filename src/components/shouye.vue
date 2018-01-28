@@ -184,6 +184,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+.shouye{
+	padding-bottom: 50px;
+}
 .fold-enter-active, .fold-leave-active {
     transition: all .5s cubic-bezier(1.0, 0.5, 0.8, 1.0);
 }

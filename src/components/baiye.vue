@@ -131,7 +131,7 @@ export default {
       ]
     }
   },
-  activated(){
+  mounted(){
 //	遮罩层显示出来
 		this.mask = mui.createMask(()=>{
 			this.itemShow='-1';
@@ -150,12 +150,6 @@ export default {
   deactivated(){
   	console.log(132)
   	window.removeEventListener('scroll',this.scrollFn)
-  },
-  mounted(){
-  	console.log('百业联盟页面添加注释')
-  	console.log('1');
-  	
-  	
   },
   methods:{
   	scrollFn(){
@@ -211,6 +205,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+.baiye{
+	padding-bottom: 50px;
+}
 .search{
 	width: 100%;
 	height: 44px;

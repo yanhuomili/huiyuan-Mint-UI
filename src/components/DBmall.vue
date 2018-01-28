@@ -54,7 +54,7 @@
  		   		
  		   </div>
  				
-		  	
+		  
 			
 			</div>
   </div>
@@ -69,6 +69,7 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App',
       showIndex:0,
+      dataNum:[],
       dbList:[],
       obj:{
 						"title":"积分兑换",
@@ -126,15 +127,13 @@ export default {
   components:{
   	'good-list':goodList
   },
-  mounted(){
-  	
-  },
   update(){
   	console.log(123)
   },
   activated(){
-
-  	console.log('activated')
+  },
+  mounted(){
+  	console.log('mounted')
   	if(this.dbList.length>0){
   		
 		  	
@@ -153,7 +152,9 @@ export default {
 		  	$('.menu-wrap ul').width(ulw);
   		})
 			
-			
+			this.dbList.forEach((el,index)=>{
+				this.dataNum.push(0)
+			})
   	},err=>{
   		console.log(err)
   	})
@@ -198,21 +199,29 @@ export default {
   		}
   	},
   	dbupdateFn(obj){
+  		this.dataNum[this.showIndex]=this.dataNum[this.showIndex]+1;
   		console.log(obj);
-  		var arr=this.dbList[this.showIndex].goodsList;
-  		for(var i=0;i<5;i++){
-	  			arr.push({ 
-				 		"goodsImg":"http://fuss10.elemecdn.com/6/ad/779f8620ff49f701cd4c58f6448b6jpeg.jpeg?imageView2/1/w/180/h/180",
-				 		"goodPrice":91+i,
-				 		"goodScore":140+i,
-				 		"goodId":210+i,
-				 		"shopId":43+i,
-				 		"shopName":"小米手机旗舰店"+i
-				 	})
-	  		}
-  		
+  		console.log(this.dataNum)
+  		if(this.dataNum[this.showIndex]>5){
+  			setTimeout(()=>{
+  				Toast('数据加载完毕');
+					this.$refs.updateDb[this.showIndex].$refs.loadmore.onBottomLoaded();
+  			},1000)
+  		}else{
+  			var arr=this.dbList[this.showIndex].goodsList;
+	  		for(var i=0;i<5;i++){
+		  			arr.push({ 
+					 		"goodsImg":"http://fuss10.elemecdn.com/6/ad/779f8620ff49f701cd4c58f6448b6jpeg.jpeg?imageView2/1/w/180/h/180",
+					 		"goodPrice":91+i,
+					 		"goodScore":140+i,
+					 		"goodId":210+i,
+					 		"shopId":43+i,
+					 		"shopName":"小米手机旗舰店"+i
+					 	})
+		  	}
+  		}
 //		console.log(this.$refs.updateDb[this.showIndex].$refs)
-//			this.$refs.updateDb[this.showIndex].$refs.loadmore.onBottomLoaded();
+
   		 
   	}
   }
@@ -222,6 +231,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+
 /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/  
 /*::-webkit-scrollbar  
 {  
@@ -276,7 +286,7 @@ export default {
 		.menu-wrap{
 			overflow-x: auto;
 			width: 88%;
-			height: 52px;
+			height: 50px;
 			/*position: relative;*/
 			border-right: 1px solid #ccc;
 			ul{
@@ -319,7 +329,7 @@ export default {
 		.db-item{
 			width: 100%;
 			height: 100%;
-			overflow-y: auto;
+			/*overflow-y: auto;*/
 			display: none;
 			&.active{
 				display: block;

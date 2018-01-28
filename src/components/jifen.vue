@@ -12,7 +12,7 @@
  				<em>
  					<img src="../assets/img/jf-t1.png"/>
  				</em>
- 				<ul class="row-lr" v-if="goodList.length>0">
+ 				<ul class="row-lr">
 	 				<li :data-id="item.id" v-for="(item,index) in goodList" @click="menu(index)" :class="{'active':menuIndex==index}" >
 	 					<router-link to="">{{item.title}}</router-link>
 	 				</li>
@@ -52,6 +52,7 @@ export default {
     return {
       msg: '',
       menuIndex:0,
+      dataNum:[0,0],
       goodList:[
 	{
 	"title":"积分兑换",
@@ -148,9 +149,6 @@ export default {
 	 ]
 	}
 	],
-      banner:[],
-      popupVisible:true,
-      tipFn:null,
       chuan:false
     }
   },
@@ -159,7 +157,7 @@ export default {
   	'jifen-duihuan':jifenDuihuan
   },
   created(){
-  	//加载数据提示
+  	//一进来页面加载数据提示
   	Indicator.open({text:'正在加载数据'});
   },
   mounted(){
@@ -178,60 +176,67 @@ export default {
 			this.chuan=true;
   	
   	//////////请求数据//////////////////
-	this.$http.get('mock/jifen.json').then(response=>{
-		console.log(response)
-		var data=response.data.list;
-			this.goodList=data;
-//			this.chuan=true;
-//			this.banner=this.goodList.banner;
-			setTimeout(()=>{
+		this.$http.get('mock/jifen.json').then(response=>{
+			console.log(response)
+			var data=response.body.list;
+				
+	//			this.chuan=true;
+	//			this.banner=this.goodList.banner;
+				setTimeout(()=>{
+					this.goodList=data;
+					Indicator.close();
+				},1000)
+		},response=>{
 			Indicator.close();
-			},200)
-	},response=>{
-		Indicator.close();
-	})
-	
-  },
-  deactivated(){
-  	Indicator.close();
+		})
   },
   deactivated(){
   	console.log('deactivated')
 		Indicator.close();
   },
   methods:{
-  	tip(){
-  	},
-  	get(){
-  		var arr=this.goodList
-  		arr.forEach(function(item,index){
-  		})
-  	},
+  	//积分兑换和积分现金切换
   	menu(index){
   		this.menuIndex=index;
   		var w=$('body').width();
   		var wpx=-(index*w)
 			$('.wrap').css({'transform':'translateX('+wpx+'px)'})			
   	},
-  	search(){
+  	search(){//跳到搜索页面
   		this.$router.push({name:'jifenSearch'})
   	},
+  	//子组件上拉记载数据的时候，触发父组件来加载数据，父组件的数据改变子组件中props数据也跟着改变，
+  	//这是就会触发watch中的方法来更新子组件的高度。
   	updateJifen(obj){
-  		var arr=this.goodList[this.menuIndex].goodsList;
-  		for(var i=0;i<5;i++){
-	  			arr.push({ 
-				 		"goodsImg":"http://fuss10.elemecdn.com/6/ad/779f8620ff49f701cd4c58f6448b6jpeg.jpeg?imageView2/1/w/180/h/180",
-				 		"goodPrice":91+i,
-				 		"goodScore":140+i,
-				 		"goodId":210+i,
-				 		"shopId":43+i,
-				 		"shopName":"小米手机旗舰店"+i
-				 	})
-	  		}
-//		this.$refs.duihuan[this.menuIndex].$refs.loadmore.onBottomLoaded();
+			this.dataNum[this.menuIndex]=this.dataNum[this.menuIndex]+1;
+			console.log(this.dataNum);
+			if(this.dataNum[this.menuIndex]>=5){
+				setTimeout(()=>{
+					this.$refs.duihuan[this.menuIndex].$refs.loadmore.onBottomLoaded();
+					Toast({
+						message:'没有更多了...',
+						duration:2000
+					})
+				},1000)
+				
+			}else{
+				var arr=[];
+				for(var i=0;i<5;i++){
+		  			arr.push({ 
+					 		"goodsImg":"http://fuss10.elemecdn.com/6/ad/779f8620ff49f701cd4c58f6448b6jpeg.jpeg?imageView2/1/w/180/h/180",
+					 		"goodPrice":91+i,
+					 		"goodScore":140+i,
+					 		"goodId":210+i,
+					 		"shopId":43+i,
+					 		"shopName":"小米手机旗舰店"+i
+					 	})
+		  	}
+				this.goodList[this.menuIndex].goodsList=this.goodList[this.menuIndex].goodsList.concat(arr);
+			}
   	}
   },
   destroyed(){
+  	//当我们进来页面ajax请求不到数据，推出页面之后，要关闭提示框
   	Indicator.close();
   }
   
@@ -307,7 +312,7 @@ a{
 		padding: 5px 0;
 		margin-right: -10px;
 		li{
-			padding: 10px 10px;
+			padding: 10px 0;
 			border-bottom: 2px solid transparent;
 		}
 		.active{
@@ -322,24 +327,20 @@ a{
 }
 .jifen-container{
 	width: 100%;
+	height: calc(100vh - 100px);
 	overflow: hidden;
 	.wrap{
 		position: relative;
 		overflow: hidden;
-		height: calc(100vh - 200px);
+		height: 100% !important;
 		transition: .5s;
-		/*transform: translateX(-150px);*/
 	}
 	.con-item{
-		/*height: calc(100vh - 103px);*/
-		overflow: auto;
 		height: 100%;
-		/*width: 375px;*/
 		position: absolute;
 		top: 0;
 		left: 0;
 	}
-	
 }
 
 </style>
