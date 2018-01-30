@@ -161,31 +161,36 @@ export default {
   	Indicator.open({text:'正在加载数据'});
   },
   mounted(){
-  	var pH=$('.page-head').height();//头部的高度
-  	var totalH=pH+50;
-  	var len=$('.wrap .con-item').length;
-  	var w=$('body').width();
-  	var n;
-  	$('.wrap').css({'height':'calc(100vh - '+totalH+'px)'});//商城列表展示的高度
-		$('.wrap').width(len*w);
-		$('.wrap .con-item').width(w);
-  	$('.wrap .con-item').each(function(item,el){
-  		n=item*w
-			$(el).css({'left':n+'px'})
-  	})
-			this.chuan=true;
+  	
   	
   	//////////请求数据//////////////////
 		this.$http.get('mock/jifen.json').then(response=>{
 			console.log(response)
 			var data=response.body.list;
-				
 	//			this.chuan=true;
 	//			this.banner=this.goodList.banner;
 				setTimeout(()=>{
 					this.goodList=data;
 					Indicator.close();
-				},1000)
+					this.$nextTick(()=>{
+						var pH=$('.page-head').height();//头部的高度
+				  	var totalH=pH+50;
+				  	var len=$('.wrap .con-item').length;
+				  	var w=$('body').width();
+				  	var n;
+//				  	$('.wrap').css({'height':'calc(100vh - '+totalH+'px)'});//商城列表展示的高度
+						$('.wrap').width(len*w);
+						$('.wrap .con-item').width(w);
+				  	$('.wrap .con-item').each(function(item,el){
+				  		n=item*w
+							$(el).css({'left':n+'px'})
+				  	})
+						this.chuan=true;
+						var screenH=document.documentElement.clientHeight;
+		  			$('.wrap').css({'height':(screenH-100)+'px'});
+							
+					})
+				},500)
 		},response=>{
 			Indicator.close();
 		})
@@ -332,7 +337,7 @@ a{
 	.wrap{
 		position: relative;
 		overflow: hidden;
-		height: 100% !important;
+		height: 100%;
 		transition: .5s;
 	}
 	.con-item{

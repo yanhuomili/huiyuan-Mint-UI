@@ -173,8 +173,8 @@ export default {
   	console.log('created');
   },
   mounted(){
-//		console.log(this.$route)
   	this.options=this.$route.params.id;
+  	
   },
   computed:{
   	hasSelect(){
@@ -327,6 +327,12 @@ export default {
         	detail.$http.get('mock/detail.json').then(res=>{
 						console.log(res.data.good);
 						detail.good=res.data.good;
+						detail.$nextTick(()=>{
+							var screenH=document.documentElement.clientHeight;
+							$('.mui-content').css({'height':(screenH-50)+'px'});
+							
+						})
+						
 						if(typeof to.params.id!='undefined'){//判断是从列表页进来，还是从购物车返回
 							detail.good.shopName=detail.good.shopName+to.params.id;
 						}
@@ -560,7 +566,7 @@ a{
 	position: fixed;
 	bottom: 0;
 	left: 0;
-	z-index: 999;
+	z-index: 1000;
 	background: #fff;
 	text-align: center;
 	color: #fff;
@@ -596,7 +602,7 @@ a{
 /*商品属性选择*/
 .gray-wrap{
 	width: 100%;
-	height: calc(100vh - 50px);
+	height: 100vh;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -606,7 +612,7 @@ a{
 		width: 100%;
 		background: #fff;
 		position: absolute;
-		bottom: 0;
+		bottom: 50px;
 		left: 0;
 		padding: 15px 0 0;
 		.top{

@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import App from './App'
-import router from './router'
+import router from './router/index.js'
 import jquery from 'jquery'
 import Mint from 'mint-ui'
 //import fastClick from 'fastclick'
@@ -23,12 +23,7 @@ Vue.use(VueResource)
 Vue.use(Vuex)
 
 Vue.config.productionTip = false
-router.beforeEach(function(to, from, next) {//导航守卫
-	// todo your work....
-//	console.log(to.fullPath)
-//	console.log(999999999999)
-	next();
-})
+
 
 //使用vuex来管理公共状态
 const store=new Vuex.Store({
@@ -36,7 +31,13 @@ const store=new Vuex.Store({
 		carGoodList:[],//购物车商品数量
 		dd:1111,
 		ee:2222,
-		ff:33333
+		ff:33333,
+		tabAddclass:{
+	      	'/':true,
+	      	'/jifen':false,
+	      	'/baiye':false,
+	      	'/my':false
+	      },
 	},
 	getters:{
 		goodNum:state=>{//过滤后的购物车商品数量
@@ -64,6 +65,19 @@ const store=new Vuex.Store({
 		delGood(state,item){//删除商品
 			console.log(state,item)
 			state.carGoodList.pop();
+		},
+		changeTab(state,str){
+			console.log(str)
+			console.log(state.tabAddclass)
+			for(var i in state.tabAddclass){
+				console.log(i);
+				if(i==str){
+					state.tabAddclass[i]=true;
+				}else{
+					state.tabAddclass[i]=false;
+				}
+			}
+			console.log(state.tabAddclass)
 		}
 	},
 	actions:{
@@ -93,4 +107,13 @@ new Vue({
   store,
   template: '<App/>',
   components: { App }
+})
+//
+router.beforeEach(function(to, from,next) {//导航守卫
+	// todo your work....
+//	console.log(to.fullPath)
+//	console.log(999999999999)
+	var str=to.path;
+	store.commit('changeTab',str);
+	next();
 })

@@ -8,7 +8,7 @@
  			<div class="safe-ban">
  				<img src="../assets/img/baoxianpingtai_banner_one.png"/>
  			</div>
- 			<div class="safe-classify">
+ 			<div class="safe-classify" v-if="list.length>0">
  				<div class="safe-classify-memu">
  					<ul class="row-lr">
  						<li @click="safeChangeMenu(index)" v-for="(item,index) in list" :class="{'active':index==menuIndex}">{{item.title}}</li>
@@ -49,7 +49,11 @@ export default {
   	console.log('activated')
   	this.$http.get('mock/safedata.json').then(res=>{
   		console.log(res.data.list);
-		this.list=res.data.list;
+			this.list=res.data.list;
+			this.$nextTick(()=>{
+				var screenH=document.documentElement.clientHeight;
+		  	$('.safe-classify-content').height(screenH-254);
+			})
   	},err=>{
   		console.log(err)
   	})

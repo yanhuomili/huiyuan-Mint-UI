@@ -10,7 +10,7 @@
  				<div class="hot-search">
  					<h3>热门搜索</h3>
  					<ul class="hot-search-result row-l">
- 						<li>鞋子</li>
+ 						<li @click="resultFn('鞋子')">鞋子</li>
  						<li>鞋子</li>
  						<li>食用油</li>
  						<li>大米</li>
@@ -35,7 +35,7 @@
  		   	<li @click="mainNavChange(index)" :class="{'active':mainActiveIndex==index}" :data-classify-id="mainnav.classifyId" v-for="(mainnav,index) in list"><router-link to="">{{mainnav.classifyTitle}}</router-link></li>
  		   </ul>
  		   
- 		   <div class="search-good-list">
+ 		   <div class="search-good-list" v-if="list.length>0">
  		   	<div class="search-good-item" :class="{'active':mainActiveIndex==i}" v-for="(goodItem,i) in list">
 	 		   	<dl class="search-tiem-nav">
 		 		   	<dt class="row-lr">
@@ -49,7 +49,6 @@
 		 		  </dl>
 		 		  
 		 		  <div class="single-model-wrap">
-		 		  	<div class="fix-bot">999</div>
 		 		  	<mt-loadmore topLoadingText="刷新页面"
 		 		  		bottomLoadingText="正在加载数据..."
 		 		  		:top-method="top"
@@ -119,8 +118,13 @@ export default {
   	dataInit(val){
   		console.log(val)
   		this.$http.get('mock/jifenSearch.json').then(res=>{
-	  		console.log(res.data.result)
+	  		console.log(res.data.result);
 	  		this.list=res.data.result;
+	  		this.$nextTick(()=>{
+	  			var screenH=document.documentElement.clientHeight;
+	  			$('.single-model-wrap').css({'height':(screenH-130)+'px'});
+	  			
+	  		})
 	  	},err=>{
 	  		console.log(err)
 	  	})
@@ -176,6 +180,10 @@ export default {
   	},
   	goDetail(id){//跳到商品详情页面
   		this.$router.push({name:'detail',params:{id:id}})
+  	},
+  	resultFn(val){
+  		this.searchText=val;
+  		this.dataInit(val)
   	}
   	
   }

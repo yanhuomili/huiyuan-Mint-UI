@@ -19,20 +19,45 @@
 		    </a>-->
 		    
 		    <router-link to="/" class="col-c">
-		    	<i><img src="../assets/img/icon_shouye_default.png"/></i>
-		    	<span>首页</span>
+		    	<p class="col-c" style="color: #D60A16;" v-if="tabAddclass['/']">
+			    	<i><img src="../assets/img/icon_shouye_selected.png"/></i>
+			    	<span>首页</span>
+			    </p>
+		    	<p class="col-c" v-else="tabAddclass['/']">
+			    	<i><img src="../assets/img/icon_shouye_default.png"/></i>
+			    	<span>首页</span>
+			    </p>
+			    
 		    </router-link>
 		    <router-link to="/jifen" class="col-c">
-		    	<i><img src="../assets/img/icon_jifenshangcheng_default.png"/></i>
-		    	<span>积分商城</span>
+		    	<p class="col-c" style="color: #D60A16;" v-if="tabAddclass['/jifen']">
+			    	<i><img src="../assets/img/icon_jifenshangcheng_selected.png"/></i>
+			    	<span>积分商城</span>
+			    </p>
+			    <p class="col-c" v-else="tabAddclass['/jifen']">	
+			    	<i><img src="../assets/img/icon_jifenshangcheng_default.png"/></i>
+			    	<span>积分商城</span>
+			    </p>
 		    </router-link>
 		    <router-link to="/baiye" class="col-c">
-		    	<i><img src="../assets/img/icon_baiyelianmeng_default.png"/></i>
-		    	<span>百业联盟</span>
+		    	<p class="col-c" style="color: #D60A16;" v-if="tabAddclass['/baiye']">
+			    	<i><img src="../assets/img/icon_baiyelianmeng_selected.png"/></i>
+			    	<span>百业联盟</span>
+			    </p>
+			    <p class="col-c" v-else="tabAddclass['/baiye']">
+			    	<i><img src="../assets/img/icon_baiyelianmeng_default.png"/></i>
+			    	<span>百业联盟</span>
+			    </p>
 		    </router-link>
 		    <router-link to="/my" class="col-c">
-		    	<i><img src="../assets/img/icon_wode_default.png"/></i>
-		    	<span>我的</span>
+		    	<p class="col-c" style="color: #D60A16;" v-if="tabAddclass['/my']">
+			    	<i><img src="../assets/img/icon_wode_selected.png"/></i>
+			    	<span>我的</span>
+			    </p>	
+			    <p class="col-c" v-else="tabAddclass['/baiye']">
+			    	<i><img src="../assets/img/icon_wode_default.png"/></i>
+			    	<span>我的</span>
+			    </p>
 		    </router-link>
 		</nav>
     
@@ -41,6 +66,7 @@
 
 <script>
 import { Tabbar, TabItem } from 'mint-ui';
+import {mapState} from 'vuex'
 export default {
   name: 'footTab',
   data () {
@@ -48,34 +74,21 @@ export default {
       msg: 'Welcome to Your Vue.js App',
       selected:'shouye',
       showFoot:true,
-      urlList:[
-      	{
-      		id:'shouye',
-      		url:'',
-      		title:'首页',
-      		src:'../src/assets/img/icon_jifenshangcheng_default.png'
-      	},
-      	{
-      		id:'baiye',
-      		url:'baiye',
-      		title:'联盟',
-      		src:'../src/assets/img/icon_baiyelianmeng_default.png'
-      		
-      	},
-      	{
-      		id:'test',
-      		url:'test',
-      		title:'测试',
-      		src:'../src/assets/img/icon_wode_default.png'
-      		
-      	}
-      ]
+      urlList:[]
     }
   },
   mounted(){
   	var fh=$('#foot-tab').height();
+  	console.log(this.$route.path)
+  	var str=this.$route.path;
+		this.$store.commit('changeTab',str);
+  	
   },
   computed:{
+  	...mapState({
+			tabAddclass:'tabAddclass',//this.	goodListFormStore==this.$store.state.goodListFormStore
+			
+		  }),
   },
   methods:{
 		bb(val,ev){
@@ -88,7 +101,7 @@ export default {
 			this.showFoot=true;
 		}
 		
-  }
+  },
 }
 </script>
 
@@ -96,6 +109,7 @@ export default {
 <style scoped lang="scss">
 	.footTab{
 		overflow: hidden;
+		position: relative;
 		nav{
 			width: 100%;
 			overflow: hidden;

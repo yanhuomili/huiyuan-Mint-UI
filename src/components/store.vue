@@ -75,7 +75,7 @@ export default {
   	var len=$('.classify-item-wrap .classify-item').length;
   	var w=$('body').width();
   	var n;
-  	$('.classify-item-wrap').css({'height':'calc(100vh - '+totalH+'px)'});//商城列表展示的高度
+//	$('.classify-item-wrap').css({'height':'calc(100vh - '+totalH+'px)'});//商城列表展示的高度
 		$('.classify-item-wrap').width(len*w);
 		$('.classify-item').width(w);
   	$('.classify-item').each(function(item,el){
@@ -83,6 +83,8 @@ export default {
   		console.log(w)
 			$(el).css({'left':n+'px'})
   	})
+  	var screenH=document.documentElement.clientHeight;
+		$('.classify-item-wrap').css({'height':(screenH-294)+'px'});
   },
   deactivated(){
   	Indicator.close();

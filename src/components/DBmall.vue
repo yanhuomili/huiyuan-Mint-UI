@@ -11,7 +11,7 @@
  		<div class="mui-content">
  		   <div class="db-nav row-lr">
 	 		   	<div class="menu-wrap">
-		 		   		<ul class="db-nav-menu" v-if="dbList.length">
+		 		   		<ul class="db-nav-menu" v-if="dbList.length>0">
 		 		   			<li @click="changeMenu(index)" v-for="(item,index) in dbList" :class="{'active':index==showIndex}">{{item.title}}</li>
 		 		   		</ul>
 	 		   	</div>
@@ -21,7 +21,7 @@
  		   		
  		   </div>
  		   <div class="db-content">
- 		   		<div class="db-wrap" v-if="dbList.length">
+ 		   		<div class="db-wrap" v-if="dbList.length>0">
 	 		   		<div class="db-item" :class="{'active':index==showIndex}" v-for="(item,index) in dbList">
 	 		   			
 	 		   			<good-list @dbLoadMore="dbupdateFn" :pIndex="item" ref="updateDb">
@@ -150,6 +150,8 @@ export default {
 		  	var ulw=len*w;
 		  	console.log(len,w,ulw)
 		  	$('.menu-wrap ul').width(ulw);
+		  	var screenH=document.documentElement.clientHeight;
+		  	$('.db-content').height(screenH-94);
   		})
 			
 			this.dbList.forEach((el,index)=>{

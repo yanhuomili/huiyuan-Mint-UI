@@ -67,9 +67,10 @@ export default {
   components:{
   },
   mounted(){
+  	this.init();
   },
   activated(){
-  	this.init();
+  	
   	
   },
   methods:{
@@ -79,6 +80,7 @@ export default {
   		var len=item.length;
   		var boxW=len*bodyW;
   		console.log(len,bodyW,boxW)
+  		item.width(bodyW);
   		$('.collect-item-wrap').width(boxW);
   	},
   	changeMenu(index){
@@ -130,7 +132,7 @@ export default {
 		/*transform: translateX(-150px);*/
 	}
 	.collect-item{
-		width: 50%;
+		/*width: 50%;*/
 		height: 100%;
 		float: left;
 		overflow-y: auto;
